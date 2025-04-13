@@ -602,11 +602,6 @@ class TruKnoToSTIXConverter:
             for vuln in vulnerabilities:
                 create_relationship(actor.id, vuln.id, "targets")
         
-        # Malware -> uses -> Attack Pattern
-        for malware in malwares:
-            for attack_pattern in attack_patterns:
-                create_relationship(malware.id, attack_pattern.id, "uses")
-        
         # Malware -> exploits -> Vulnerability
         for malware in malwares:
             for vuln in vulnerabilities:

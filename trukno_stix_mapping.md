@@ -95,10 +95,9 @@ We'll also need to create STIX Relationship objects to connect these objects:
 6. Threat Actor → "uses" → Malware
 7. Threat Actor → "uses" → Attack Pattern
 8. Threat Actor → "targets" → Vulnerability
-9. Malware → "uses" → Attack Pattern
-10. Malware → "exploits" → Vulnerability
-11. Indicator → "indicates" → Malware
-12. Indicator → "indicates" → Attack Pattern
+9. Malware → "exploits" → Vulnerability
+10. Indicator → "indicates" → Malware
+11. Indicator → "indicates" → Attack Pattern
 
 ## Implementation Considerations
 
