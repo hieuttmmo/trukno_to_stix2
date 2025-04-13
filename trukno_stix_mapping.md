@@ -85,7 +85,7 @@ Before diving into the mapping, here are the main STIX objects we'll use:
 
 ### Relationships
 
-We'll also need to create STIX Relationship objects to connect these objects:
+We'll create the following STIX Relationship objects to connect our objects:
 
 1. Report → "reports" → Attack Pattern
 2. Report → "reports" → Malware
@@ -95,9 +95,7 @@ We'll also need to create STIX Relationship objects to connect these objects:
 6. Threat Actor → "uses" → Malware
 7. Threat Actor → "uses" → Attack Pattern
 8. Threat Actor → "targets" → Vulnerability
-9. Malware → "exploits" → Vulnerability
-10. Indicator → "indicates" → Malware
-11. Indicator → "indicates" → Attack Pattern
+9. Indicator → "indicates" → Threat Actor
 
 ## Implementation Considerations
 

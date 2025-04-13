@@ -489,17 +489,35 @@ class TruKnoToSTIXConverter:
         ]:
             ioc_list = []
             
+            # Debug the IOC structure
+            print(f"Looking for {ioc_type} in TruKno data")
+            
             # Try to get IOCs from breach data
             if ioc_type in self.trukno_data:
+                print(f"Found {ioc_type} at top level")
                 ioc_list = self.trukno_data[ioc_type]
             
             # IOCs might also be in a different location in the data structure
-            elif "IOCs" in self.trukno_data and ioc_type in self.trukno_data["IOCs"]:
-                ioc_list = self.trukno_data["IOCs"][ioc_type]
+            elif "IOCs" in self.trukno_data:
+                # Handle case where IOCs is a list of dictionaries
+                if isinstance(self.trukno_data["IOCs"], list) and len(self.trukno_data["IOCs"]) > 0:
+                    for ioc_dict in self.trukno_data["IOCs"]:
+                        if isinstance(ioc_dict, dict) and ioc_type in ioc_dict:
+                            print(f"Found {ioc_type} in IOCs list")
+                            if ioc_list:
+                                ioc_list.extend(ioc_dict[ioc_type])
+                            else:
+                                ioc_list = ioc_dict[ioc_type]
+                # Handle case where IOCs is a dictionary
+                elif isinstance(self.trukno_data["IOCs"], dict) and ioc_type in self.trukno_data["IOCs"]:
+                    print(f"Found {ioc_type} in IOCs dictionary")
+                    ioc_list = self.trukno_data["IOCs"][ioc_type]
             
             # Convert to list if it's a string
             if isinstance(ioc_list, str):
                 ioc_list = [i.strip() for i in ioc_list.split(',')]
+            
+            print(f"Found {len(ioc_list)} {ioc_type} to process")
                 
             # Create indicators for each IOC
             for ioc_value in ioc_list:
@@ -510,6 +528,7 @@ class TruKnoToSTIXConverter:
                 if indicator:
                     self.stix_objects.append(indicator)
                     self.object_refs.append(indicator.id)
+                    print(f"Created indicator: {indicator.id} for {pattern_type} {ioc_value}")
     
     def _create_vulnerability_objects(self) -> None:
         """Create Vulnerability objects from CVEs"""
@@ -601,21 +620,11 @@ class TruKnoToSTIXConverter:
         for actor in threat_actors:
             for vuln in vulnerabilities:
                 create_relationship(actor.id, vuln.id, "targets")
-        
-        # Malware -> exploits -> Vulnerability
-        for malware in malwares:
-            for vuln in vulnerabilities:
-                create_relationship(malware.id, vuln.id, "exploits")
-        
-        # Indicator -> indicates -> Malware
+                
+        # Indicator -> indicates -> Threat Actor (new relationship)
         for indicator in indicators:
-            for malware in malwares:
-                create_relationship(indicator.id, malware.id, "indicates")
-        
-        # Indicator -> indicates -> Attack Pattern
-        for indicator in indicators:
-            for attack_pattern in attack_patterns:
-                create_relationship(indicator.id, attack_pattern.id, "indicates")
+            for actor in threat_actors:
+                create_relationship(indicator.id, actor.id, "indicates")
     
     def _create_report_object(self) -> None:
         """Create the main Report object for the breach"""
