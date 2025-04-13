@@ -1,0 +1,572 @@
+{
+  "_id": "67dc05458f5a820fd25fd5a0",
+  "title": "UAT-5918 targets critical infrastructure entities in Taiwan",
+  "description": "UAT-5918, a threat actor believed to be motivated by establishing long-term access for information theft, uses a combination of web shells and open-sourced tooling to conduct post-compromise activities to establish persistence in victim environments for information theft and credential harvesting.",
+  "date": "2025-03-21T10:00:47.000Z",
+  "url": "https://blog.talosintelligence.com/uat-5918-targets-critical-infra-in-taiwan/",
+  "source": "Cisco (Talos)",
+  "author": "Jungsoo An",
+  "affectedIndustries": [
+    "Critical Infrastructure",
+    "Telecom",
+    "Healthcare",
+    "Software & IT",
+    "Education"
+  ],
+  "affectedTechnologies": [
+    "Windows (Endpoint OS)"
+  ],
+  "category": [
+    "Endpoint Security"
+  ],
+  "relatedTTPs": [
+    "5fac401109c34e0017dfb8b3",
+    "5f9c00e9877bb400171a48b2",
+    "5ff3b07118d9c00017529b22",
+    "600716a17cd3ef0017995a5a",
+    "5f9c0937877bb400171a48b5",
+    "601afe9ea2de3c0015a52340",
+    "5f9c0b2d877bb400171a48b6",
+    "5ff85f6681609b001739004e",
+    "5e578a93f51c645aba4f0709",
+    "5ed66a2393b8b800174afd06",
+    "5e578a8ef51c645aba4eea69",
+    "619611aafc0a680016b0c73c",
+    "5e5bf3a5f0f95e001718f6d8",
+    "5eb5b286b13b9900175fb9fa",
+    "5ed16000504ff500173ca8f5",
+    "600716437cd3ef0017995a59",
+    "5fa56d3d21faba0017155c7a",
+    "5f9c0302877bb400171a48b3",
+    "5ffcb6679a80110017c933a5",
+    "5fe344d7ddf96b001749040b",
+    "600700f07cd3ef0017995a35",
+    "5ff39a8d18d9c00017529b21",
+    "5e578a89f51c645aba4ec798",
+    "60070e377cd3ef0017995a4c",
+    "5ffcb9469a80110017c933a7",
+    "5eda5811d845d500175c0716",
+    "5ff5e9864f7abf0017fd30ad",
+    "5e578a85f51c645aba4eb60b"
+  ],
+  "relatedActors": [
+    "67dd85bf02c17a89d6952732"
+  ],
+  "relatedMalware": [
+    "647ddcefed6b6500140224e9",
+    "647ddc71ed6b6500140224d9",
+    "6349428b0ac3100016c2c2c3",
+    "67dd866302c17a89d695274d",
+    "67dd867902c17a89d695275b",
+    "67dd86b602c17a89d6952769",
+    "67dd86c802c17a89d6952777",
+    "65268ca0300c00001fbeef0e",
+    "62f4aa5835d3770016e01e9d",
+    "651570ca85fd78001f86a2b6",
+    "60b7ec37908233001503d3b3",
+    "608692afc48a4f3a90179fe0",
+    "608692afc48a4f3a90179fc8",
+    "67dd875002c17a89d6952785",
+    "67dd877002c17a89d6952793",
+    "61e54ce918529a0016c5d790"
+  ],
+  "IOCs": [
+    {
+      "ips": [],
+      "ipsWithRange": [],
+      "domains": [],
+      "hashesMd5": [],
+      "hashesSha1": [],
+      "hashesSha256": [
+        "6F6F7AA6144A1CFE61AC0A80DB7AD712440BDC5730644E05794876EB8B6A41B4",
+        "BAB01D029556CF6290F6F21FEC5932E13399F93C5FDBCFFD3831006745F0EB83",
+        "F7F6D0AFB300B57C32853D49FF50650F5D1DC7CF8111AA32FF658783C038BFE5",
+        "497A326C6C207C1FB49E4DAD81D051FCF6BCBE047E0D3FE757C298EF8FE99ABA",
+        "F9EB34C34E4A91630F265F12569F70B83FEBA039C861D6BF906B74E7FB308648",
+        "DD832C8E30ED50383495D370836688EE48E95334270CBBCE41109594CB0C9FD1",
+        "F7B52EE613F8D4E55A69F0B93AA9AA5472E453B0C458C8390DB963FF8B0B769C",
+        "B994CBC1B5C905A2B731E47B30718C684521E8EC6AFB601AFECF30EF573E5153",
+        "12D4EFE2B21B5053A3A21B49F25A6A4797DC6E9A80D511F29CA67039BA361F63",
+        "2272925B1E83C7C3AB24BDEB82CE727DB84F5268C70744345CDA41B452C49E84",
+        "71EB5115E8C47FFF1AB0E7ACEBAEA7780223683259A2BB1B8DB1EB3F26878CA4",
+        "E159824448A8E53425B38BD11030AA786C460F956C9D7FC118B212E8CED4087A",
+        "7EF22BFB6B2B2D23FE026BDFD7D2304427B6B62C6F9643EFEDDB4820EBF865AF",
+        "EFC0D2C1E05E106C5C36160E17619A494676DEB136FB877C6D26F3ADF75A5777",
+        "B7690c0fc9ec32e1a54663a2e5581e6260fe9318a565a475ee8a56c0638f38d0",
+        "A774244ea5d759c4044aea75128a977e45fd6d1bb5942d9a8a1c5d7bff7e3db9",
+        "31742ab79932af3649189b9287730384215a8dccdf21db50de320da7b3e16bb4",
+        "09cea8aed5c58c446e6ef4d9bb83f7b5d7ba7b7c89d4164f397d378832722b69",
+        "D47e35baee57eb692065a2295e3e9de40e4c57dba72cb39f9acb9f564c33b421",
+        "1753fa34babeeee3b20093b72987b7f5e257270f86787c81a556790cb322c747",
+        "F4ea99dc41cb7922d01955eef9303ec3a24b88c3318138855346de1e830ed09e",
+        "5b0f8c650f54f17d002c01dcc74713a40eccb0367357d3f86490e9d17fcd71e8",
+        "3588bda890ebf6138a82ae2e4f3cd7234ec071f343c9f5db5a96a54734eeaf9f",
+        "95eee44482b4226efe3739bed3fa6ce7ae7db407c1e82e988f27cd27a31b56a6",
+        "02ab315e4e3cf71c1632c91d4914c21b9f6e0b9aa0263f2400d6381aab759a61",
+        "D1825cd7a985307c8585d88d247922c3a51835f9338dc76c10cdbad859900a03",
+        "234899dea0a0e91c67c7172204de3a92a4cbeef37cdc10f563bf78343234ad1d",
+        "8d440c5f0eca705c6d27aa4883c9cc4f8711de30fea32342d44a286b362efa9a",
+        "Ffb8db57b543ba8a5086640a0b59a5def4929ad261e9f3624b2c0a22ae380391"
+      ],
+      "mitre": [],
+      "cves": []
+    }
+  ],
+  "procedures": [
+    {
+      "procedure": "<p>FScan is a port and vulnerability scanning tool that can scan ranges of IP addresses and Ports specified by the attackers.</p>\n<p>&nbsp;<img height=\"454px;\" src=\"https://lh7-rt.googleusercontent.com/slidesz/AGV_vUcQtmy-tB5cGwkwnYPj_WY5W6CFmiclEWrpsBKi_cnDwjn7Wqr-jF096H_KZf78welf-LQ9Aa767Zkgr9M_UcK7bgWzabeifyH3RaSnC5ZUk4MHEXENgM3AAOyXvXXAuLuhWrLCMg=s2048?key=LRgFy7HreyAzelDNxstMRdfo\" width=\"928px;\"/>&nbsp;</p>",
+      "TTP_ID": "5e5bf3a5f0f95e001718f6d8",
+      "TTPDetails": {
+        "title": "Vulnerability Scanning",
+        "description": "Vulnerability Scanning attack tries to harvest software type & version numbers via server banners, listening ports, or other network artifacts to identify victim vulnerabilities that can be used during targeting. Information from these scans may reveal opportunities for other forms of reconnaissance (ex: Search Open Websites/Domains or Search Open Technical Databases), establishing operational resources (ex: Develop Capabilities or Obtain Capabilities), and/or initial access (ex: Exploit Public-Facing Application).",
+        "number": "T1595.002",
+        "stage": "01: Reconnaissance"
+      }
+    },
+    {
+      "procedure": "<p>UAT-5918 typically gains initial access to their victims via exploitation of known vulnerabilities on unpatched servers exposed to the internet.</p>",
+      "TTP_ID": "5fac401109c34e0017dfb8b3",
+      "TTPDetails": {
+        "title": "Exploit Public-Facing Application",
+        "description": "Exploit Public-Facing Application attack attempting to take advantage of a weakness in an Internet-facing computer or program using software, data, or commands in order to cause unintended or unanticipated behavior.",
+        "number": "T1190",
+        "stage": "03: Initial Access"
+      }
+    },
+    {
+      "procedure": "<p>Activity following a successful compromise consists of preliminary reconnaissance to identify users, domains, and gather system information. Typical commands executed on endpoints include:&nbsp;</p>\n<p><br></p>\n<p>systeminfo</p>",
+      "TTP_ID": "5ff3b07118d9c00017529b22",
+      "TTPDetails": {
+        "title": "System Information Discovery",
+        "description": "System Information Discovery attack is used by an adversary to get detailed information about the operating system and hardware, including version, patches, hotfixes, service packs, and architecture to shape follow-on attack steps including whether or not to fully infect the target and/or attempts other specific actions.",
+        "number": "T1082",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>Activity following a successful compromise consists of preliminary reconnaissance to identify users, domains, and gather system information. Typical commands executed on endpoints include:&nbsp;</p>\n<p><br></p>\n<p>ping &lt;IP&gt;&nbsp;</p>\n<p>ipconfig</p>",
+      "TTP_ID": "5f9c00e9877bb400171a48b2",
+      "TTPDetails": {
+        "title": "System Network Configuration Discovery",
+        "description": "System Network Configuration Discovery attack look for details about the network configuration and settings of systems they access or through information discovery of remote systems. Several operating system administration utilities exist (e.g. Arp, Ipconfig/Ifconfig, Nbtstat, and Route) that can be used to gather this information.",
+        "number": "T1016",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>Activity following a successful compromise consists of preliminary reconnaissance to identify users, domains, and gather system information. Typical commands executed on endpoints include:&nbsp;</p>\n<p><br></p>\n<p>tasklist&nbsp;</p>\n<p>tasklist -v&nbsp;</p>",
+      "TTP_ID": "5f9c0937877bb400171a48b5",
+      "TTPDetails": {
+        "title": "Process Discovery",
+        "description": "Process Discovery attack attempts to get information about running processes on a system to gain an understanding of common software/applications running on systems within the network. Adversaries may use the information from Process Discovery during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.",
+        "number": "T1057",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>Activity following a successful compromise consists of preliminary reconnaissance to identify users, domains, and gather system information. Typical commands executed on endpoints include:&nbsp;</p>\n<p><br></p>\n<p>arp \u2013a&nbsp;</p>\n<p>route print&nbsp;</p>\n<p>netstat -ano</p>",
+      "TTP_ID": "600716437cd3ef0017995a59",
+      "TTPDetails": {
+        "title": "System Network Connections Discovery",
+        "description": "Adversaries may attempt to get a listing of network connections to or from the compromised system they are currently accessing or from remote systems by querying for information over the network.\n\nAn adversary who gains access to a system that is part of a cloud-based environment may map out Virtual Private Clouds or Virtual Networks in order to determine what systems and services are connected. The actions performed are likely the same types of discovery techniques depending on the operating system, but the resulting information may include details about the networked cloud environment relevant to the adversary's goals. Cloud providers may have different ways in which their virtual networks operate.[1][2][3]\n\nUtilities and commands that acquire this information include netstat, \"net use,\" and \"net session\" with Net. In Mac and Linux, netstat and lsof can be used to list current connections. who -a and w can be used to show which users are currently logged in, similar to \"net session\".",
+        "number": "T1049",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>Activity following a successful compromise consists of preliminary reconnaissance to identify users, domains, and gather system information. Typical commands executed on endpoints include:&nbsp;</p>\n<p><br></p>\n<p>net user&nbsp;</p>\n<p>whoami&nbsp;</p>\n<p>query user&nbsp;</p>",
+      "TTP_ID": "600716a17cd3ef0017995a5a",
+      "TTPDetails": {
+        "title": "System Owner/User Discovery",
+        "description": "Adversaries may attempt to identify the primary user, currently logged in user, set of users that commonly uses a system, or whether a user is actively using the system. They may do this, for example, by retrieving account usernames or by using OS Credential Dumping. The information may be collected in a number of different ways using other Discovery techniques, because user and username details are prevalent throughout a system and include running process ownership, file/directory ownership, session information, and system logs. Adversaries may use the information from System Owner/User Discovery during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.\n\nUtilities and commands that acquire this information include whoami. In Mac and Linux, the currently logged in user can be identified with w and who.",
+        "number": "T1033",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>Activity following a successful compromise consists of preliminary reconnaissance to identify users, domains, and gather system information. Typical commands executed on endpoints include:&nbsp;</p>\n<p><br></p>\n<p>cmd /c dir c:\\users\\&lt;username&gt;\\Desktop&nbsp;</p>\n<p>cmd /c dir c:\\users\\&lt;username&gt;\\Documents&nbsp;</p>\n<p>cmd /c dir c:\\users\\&lt;username&gt;\\Downloads&nbsp;</p>\n<p><br></p>\n<p>UAT-5918 pivots across endpoints enumerating local and shared drives to find data of interest to the threat actor. This data may include everything that furthers the APT\u2019s strategic and tactical goals and ranges from confidential documents, DB exports and backups to application configuration files.</p>",
+      "TTP_ID": "5f9c0b2d877bb400171a48b6",
+      "TTPDetails": {
+        "title": "File and Directory Discovery",
+        "description": "File and Directory Discovery attack enumerates files & directories or search in specific locations of a host or network share for certain information within a file system during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions. Attackers use command shell utilities like dir, tree, ls, find, and locate.",
+        "number": "T1083",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>The threat actor also relies extensively on the use of In-Swor, a publicly available tool authored and documented by Chinese speaking individuals, for conducting port scans across ranges of IP addresses. A sample command of In-Swor's use is:&nbsp;</p>\n<p><br></p>\n<p>Run.exe -h &lt;ip_range&gt;/24 -nopoc -pwdf pw.txt -p 1521,6379 -t 4&nbsp;</p>\n<p><br></p>\n<p>Netspy, another tool authored and documented by Chinese speaking individuals, is a network segmentation discovery tool that UAT-5918 employs occasionally for discovery. The fact that the operator had to check the tool help denotes the lack of automation and the unusual usage of such tool:</p>\n<p><br></p>\n<p>netspy.exe -h&nbsp;</p>",
+      "TTP_ID": "601afe9ea2de3c0015a52340",
+      "TTPDetails": {
+        "title": "Network Service Discovery",
+        "description": "Network Service Discovery technique allows adversaries to get a listing of services running on remote hosts and local network infrastructure devices, including those that may be vulnerable to remote software exploitation. Common methods to acquire this information include port and/or vulnerability scans using tools that are brought onto a system.\n\nWithin cloud environments, adversaries may attempt to discover services running on other cloud hosts. Additionally, if the cloud environment is connected to a on-premises environment, adversaries may be able to identify services running on non-cloud systems as well.\n\nWithin macOS environments, adversaries may use the native Bonjour application to discover services running on other macOS hosts within a network. The Bonjour mDNSResponder daemon automatically registers and advertises a host\u2019s registered services on the network. For example, adversaries can use a mDNS query (such as dns-sd -B _ssh._tcp .) to find other systems broadcasting the ssh service.",
+        "number": "T1046",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>The threat actor then proceeds to download and place publicly available red-teaming tools on endpoints to carry out further actions.</p>",
+      "TTP_ID": "5ff85f6681609b001739004e",
+      "TTPDetails": {
+        "title": "Ingress Tool Transfer",
+        "description": "Ingress Tool Transfer may allow attackers to transfer tools or other files from an external system into a compromised environment. Files may be copied from an external adversary controlled system through the command and control channel to bring tools into the victim network or through alternate protocols with another tool such as FTP.",
+        "number": "T1105",
+        "stage": "12: Command & Control"
+      }
+    },
+    {
+      "procedure": "<p>In some cases, UAT-5918 also disabled Microsoft Defender\u2019s scanning of their working directories on disk:&nbsp;</p>\n<p><br></p>\n<p>powershell.exe -exec bypass Add-MpPreference -ExclusionPath &lt;working_directory&gt;&nbsp;</p>\n<p>powershell Get-MpPreference&nbsp;</p>",
+      "TTP_ID": "5ed66a2393b8b800174afd06",
+      "TTPDetails": {
+        "title": "Disable or Modify Tools",
+        "description": "Disable or Modify Tools attack avoids possible detection of their malicious activities by killing security software, event logging processes, deleting Registry keys so security tools do not start at run time, etc.",
+        "number": "T1562.001",
+        "stage": "07: Defense Evasion"
+      }
+    },
+    {
+      "procedure": "<p>The actor uses FRP and Neo-reGeorge to establish reverse proxy tunnels for accessing compromised endpoints via attacker controlled remote hosts. The tools are usually downloaded as archives and extracted before execution:</p>\n<p><br></p>\n<p>&nbsp;<img height=\"298px;\" src=\"https://lh7-rt.googleusercontent.com/slidesz/AGV_vUdntVQA0zbEnAxM0EAbMOFVKyUxtlemm_0kaVrQquqqh8bMqjT9C1atn6LMzqk3sAt2Qq-DWoXgi6PPve7qt1WiIK-ktVZFIFjGYWqgAJtkYnU6HPFVSnwheTAIzeOpT2kuSieIFA=s2048?key=LRgFy7HreyAzelDNxstMRdfo\" width=\"928px;\"/>&nbsp;</p>",
+      "TTP_ID": "619611aafc0a680016b0c73c",
+      "TTPDetails": {
+        "title": "Reverse Proxy",
+        "description": "Reverse Proxy technique uses tools like Fast Reverse Proxy (FRP) written in Golang to help attackers expose a local server behind a NAT or firewall to the internet by forwarding its port.",
+        "number": "",
+        "stage": "12: Command & Control"
+      }
+    },
+    {
+      "procedure": "<p>In other instances, In-Swor was used to establish proxy channels:</p>\n<p><br></p>\n<p>svchost.exe proxy -l *:22 -k 9999&nbsp;</p>\n<p>svchost.exe proxy -l *:443 -k 9999&nbsp;</p>\n<p>svchost.exe proxy -hc -l *:443 -k 99997654 &nbsp;</p>\n<p>svchost.exe -hc proxy -l *:443 -k 99997654 &nbsp;</p>\n<p>svchost.exe proxy -l 443 \u2013v&nbsp;</p>\n<p>svchost.exe -type server -proto tcp -listen :443 &nbsp;</p>\n<p>svchost.exe -type server -proto http -listen :443 &nbsp;</p>\n<p>svchost.exe -type server -proto rhttp -listen :443&nbsp;</p>",
+      "TTP_ID": "5eb5b286b13b9900175fb9fa",
+      "TTPDetails": {
+        "title": "Proxy",
+        "description": "Proxy attack relays or bounces malicious traffic through intermediary destination network devices (many times already compromised devices) to funnel covert traffic past security systems like a firewall to protect real destination C&C server. Adversaries use these types of proxies to manage C2 communications, reduce the number of simultaneous outbound network connections, provide resiliency in the face of connection loss, or to ride over existing trusted communications paths between victims to avoid suspicion.",
+        "number": "T1090",
+        "stage": "12: Command & Control"
+      }
+    },
+    {
+      "procedure": "<p>In addition to FScan, PortBrute, another password brute forcer for multiple protocols such as FTP, SSH, SMB, MYSQL, MONGODB, etc., was also downloaded and used:</p>\n<p><br></p>\n<p>PortBruteWin(5).exe -up &lt;username&gt;:&lt;password&gt;&nbsp;</p>\n<p><br></p>\n<p>A .NET-based password cracker (brute forcer) for services such as SSH, RDP, FTP, MySQL, SMPT, Telnet, VNC, etc.</p>",
+      "TTP_ID": "5ed16000504ff500173ca8f5",
+      "TTPDetails": {
+        "title": "Brute Force",
+        "description": "Brute Force attack allows adversaries to gain access to accounts when passwords are unknown or when password hashes are obtained. An adversary may systematically gain the password using a repetitive or iterative mechanism like guessing, cracking, stuffing, spraying, etc.",
+        "number": "T1110",
+        "stage": "08: Credential Access"
+      }
+    },
+    {
+      "procedure": "<p>The threat actor uses two utilities for monitoring the current connection to the compromised hosts \u2014 NirSoft's CurrPorts utility and TCPView. Both tools are likely used to perform additional network discovery to find accessible hosts to pivot to:&nbsp;</p>\n<p><br></p>\n<p>C:\\Users\\&lt;compromised_user&gt;\\Desktop\\cports-x64/cports.exe&nbsp;</p>\n<p>C:\\Users\\&lt;compromised_user&gt;\\Desktop\\TCPView\\tcpview64.exe&nbsp;</p>\n<p><br></p>\n<p>UAT-5918 consistently attempts to gain access to additional endpoints within the enterprise. They will perform network reconnaissance cyclically to discover new endpoints worth pivoting to and make attempts to gain access via RDP or Impacket.</p>\n<p><br></p>\n<p>mstsc.exe -v &lt;hostname&gt;&nbsp;</p>",
+      "TTP_ID": "5ffcb9469a80110017c933a7",
+      "TTPDetails": {
+        "title": "Remote System Discovery",
+        "description": "Remote System Discovery allows adversaries to get a listing of other systems by IP address, hostname, or other logical identifiers on a network that may be used for Lateral Movement from the current system.",
+        "number": "T1018",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>The threat actor also uses PowerShell-based scripts to attempt SMB logins to specific endpoints already identified by them:</p>\n<p><br></p>\n<p>powershell.exe -file C:\\ProgramData\\smblogin-extra-mini.ps1&nbsp;</p>",
+      "TTP_ID": "5e578a93f51c645aba4f0709",
+      "TTPDetails": {
+        "title": "PowerShell",
+        "description": "PowerShell is a form of fileless attack where hackers abuse legitimate admin command-line interface & scripting environment in the Windows OS to discover information,  or download and run executables on disk or in memory without touching disk.",
+        "number": "T1059.001",
+        "stage": "04: Execution"
+      }
+    },
+    {
+      "procedure": "<p>The threat actor attempts to deploy multiple web shells on systems they find are hosting web applications. The web shells are typically ASP or PHP-based files placed deep inside housekeeping directories such as image directories, user files etc.&nbsp;</p>\n<p><br></p>\n<p>The threat actor uses JuicyPotato\u2019s (a privilege escalation tool) web shell variant that allows JuicyPotato to act as a web shell on the compromised system accepting commands from remote systems to execute:</p>\n<p><br></p>\n<p>&nbsp;<img height=\"138px;\" src=\"https://lh7-rt.googleusercontent.com/slidesz/AGV_vUfWZ6wjg--_bynj7Meks2xB8pHua6egSGxq9361mz9Kb335AJBR8DaB_Xlak01iWhYfG7sOmWu0D5dK0hkuEVZZbPKn3NQknMCSuSYbHKj-Jd8PzmtZRpo1l8pEyCVZ50ggQ4QGvw=s2048?key=LRgFy7HreyAzelDNxstMRdfo\" width=\"928px;\"/>&nbsp;</p>",
+      "TTP_ID": "5e578a8ef51c645aba4eea69",
+      "TTPDetails": {
+        "title": "Web Shell",
+        "description": "Web Shell uses a malicious script to escalate & maintain persistent access on an already compromised web application allowing attacker to remotely access and control the web server",
+        "number": "T1505.003",
+        "stage": "05: Persistence"
+      }
+    },
+    {
+      "procedure": "<p>JuicyPotato is then run to spawn cmd.exe to run a reverse shell that allows the threat actor to run arbitrary commands:&nbsp;</p>\n<p><br></p>\n<p>Run.exe -t t -p c:\\windows\\system32\\cmd.exe -l 1111 -c {9B1F122C-2982-4e91-AA8B-E071D54F2A4D}&nbsp;</p>",
+      "TTP_ID": "5f9c0302877bb400171a48b3",
+      "TTPDetails": {
+        "title": "Windows Command Shell",
+        "description": "Windows Command Shell attack abuses the Windows command shell to control almost any aspect of a system (with right privileges) including cmd.exe to execute various commands & payloads.",
+        "number": "T1059.003",
+        "stage": "04: Execution"
+      }
+    },
+    {
+      "procedure": "<p>UAT-5918 will also use PuTTY\u2019s pscp tool to connect to and deliver additional web shells to accessible endpoints (likely servers) within the network:</p>\n<p><br></p>\n<p>pscp.exe &lt;web_shell&gt; &lt;user&gt;@&lt;IP&gt;:/var/www/html/&lt;web_shell&gt;&nbsp;</p>",
+      "TTP_ID": "5ffcb6679a80110017c933a5",
+      "TTPDetails": {
+        "title": "Lateral Tool Transfer",
+        "description": "Lateral Tool Transfer attack allows adversaries to transfer tools or other files between systems in a compromised environment. Files may be copied from one system to another to stage adversary tools or other files over the course of an operation to support lateral movement using inherent file sharing protocols such as SMB, RDP, etc.",
+        "number": "T1570",
+        "stage": "10: Lateral Movement"
+      }
+    },
+    {
+      "procedure": "<p>Furthermore, Talos has observed UAT-5918 execute reverse Meterpreter shells to maintain persistent access to the compromised hosts:</p>\n<p><br></p>\n<p>C:\\ProgramData\\bind.exe&nbsp;</p>\n<p>C:\\ProgramData\\microbind.exe&nbsp;</p>\n<p>C:\\ProgramData\\reverse.exe&nbsp;</p>\n<p>cmd /c C:/ProgramData/microbind.exe&nbsp;</p>",
+      "TTP_ID": "5fa56d3d21faba0017155c7a",
+      "TTPDetails": {
+        "title": "Reverse Shell",
+        "description": "Reverse Shell attack allows adversaries to establish a server on their own machine and create a reverse connection to the target machine that listens for incoming connections on a specified port to bypass security firewalls. This allows attacker to gain control of the compromised system to enable arbitrary command execution.",
+        "number": "",
+        "stage": "04: Execution"
+      }
+    },
+    {
+      "procedure": "<p>UAT-5918 regularly creates and assigns administrative privileges to user accounts they\u2019ve created on compromised endpoints:&nbsp;</p>\n<p><br></p>\n<p>net user &lt;victimname_username&gt; &lt;password&gt; /add&nbsp;</p>\n<p>net localgroup administrators &lt;username&gt; /add&nbsp;</p>\n<p>net group domain admins &lt;username&gt; /add /domain&nbsp;</p>",
+      "TTP_ID": "5fe344d7ddf96b001749040b",
+      "TTPDetails": {
+        "title": "Domain Account (Create Account)",
+        "description": "Domain Account (Create Account) technique allows an adversary to create a domain account to maintain access to victim systems. Such accounts may be used to establish secondary credentialed access that do not require persistent remote access tools to be deployed on the system.",
+        "number": "T1136.002",
+        "stage": "05: Persistence"
+      }
+    },
+    {
+      "procedure": "<p>The \u201creg\u201d system command is used to take dumps of the SAM, SECURITY and SYSTEM hives:</p>\n<p><br></p>\n<p>&nbsp;<img height=\"282px;\" src=\"https://lh7-rt.googleusercontent.com/slidesz/AGV_vUdH4gCoDcDIr45z5ry-TEmjfZ0oy7xGmiN42oVSuqKbbWyHw2wUSdwGGfYnrAFog5uHurv1zj1WAGfip7B4BApxAyeHuijwlBDpVRddc9QNNNnJZ7GPsDU_5smBwtuhvcg8zr_H=s2048?key=LRgFy7HreyAzelDNxstMRdfo\" width=\"928px;\"/>&nbsp;</p>",
+      "TTP_ID": "600700f07cd3ef0017995a35",
+      "TTPDetails": {
+        "title": "Security Account Manager",
+        "description": "Adversaries may attempt to extract credential material from the Security Account Manager (SAM) database either through in-memory techniques or through the Windows Registry where the SAM database is stored. The SAM is a database file that contains local accounts for the host, typically those found with the net user command. Enumerating the SAM database requires SYSTEM level access.\n\nA number of tools can be used to retrieve the SAM file through in-memory techniques:\n\npwdumpx.exe\ngsecdump\nMimikatz\nsecretsdump.py\nAlternatively, the SAM can be extracted from the Registry with Reg:\n\nreg save HKLM\\sam sam\nreg save HKLM\\system system\nCreddump7 can then be used to process the SAM database locally to retrieve hashes.",
+        "number": "T1003.002",
+        "stage": "08: Credential Access"
+      }
+    },
+    {
+      "procedure": "<p>The adversary also uses a tool called BrowserDataLite, a tool to extract Login information, cookies, and browsing history from web browsers. The extracted information is subsequently accessed via notepad.exe:&nbsp;</p>\n<p><br></p>\n<p>BrowserDataLite_x64.exe&nbsp;</p>\n<p>&nbsp;</p>\n<p>C:\\Windows\\system32\\NOTEPAD.EXE Chrome_LoginPass.txt&nbsp;</p>\n<p>C:\\Windows\\system32\\NOTEPAD.EXE Chrome_Cookies.txt&nbsp;</p>\n<p>C:\\Windows\\system32\\NOTEPAD.EXE Chrome_History.txt&nbsp;</p>",
+      "TTP_ID": "5e578a89f51c645aba4ec798",
+      "TTPDetails": {
+        "title": "Credentials from Web Browsers",
+        "description": "Credentials from Web Browsers attack allows adversaries to collect stored passwords from internet browsers using third-party programs & scripts. Web browsers commonly save credentials such as website usernames and passwords so that they do not need to be entered manually in the future. Web browsers typically store the credentials in an encrypted format within a credential store; however, methods exist to extract plaintext credentials from web browsers. For example, on Windows systems, encrypted credentials may be obtained from Google Chrome by reading a database file. Adversaries may also acquire credentials by searching web browser process memory for patterns that commonly match credentials.",
+        "number": "T1555.003",
+        "stage": "08: Credential Access"
+      }
+    },
+    {
+      "procedure": "<p>The adversary also uses a tool called BrowserDataLite, a tool to extract Login information, cookies, and browsing history from web browsers. The extracted information is subsequently accessed via notepad.exe.</p>",
+      "TTP_ID": "60070e377cd3ef0017995a4c",
+      "TTPDetails": {
+        "title": "Browser Information Discovery",
+        "description": "Browser Information Discovery technique allows an adversary to numerate information about browsers to learn more about compromised environments. Data saved by browsers (such as bookmarks, accounts, and browsing history) may reveal a variety of personal information about users (e.g., banking sites, relationships/interests, social media, etc.) as well as details about internal network resources such as servers, tools/dashboards, or other related infrastructure.\n\nBrowser information may also highlight additional targets after an adversary has access to valid credentials, especially Credentials In Files associated with logins cached by a browser.\n\nSpecific storage locations vary based on platform and/or application, but browser information is typically stored in local files and databases (e.g., %APPDATA%/Google/Chrome).",
+        "number": "T1217",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>UAT-5918 consistently attempts to gain access to additional endpoints within the enterprise. They will perform network reconnaissance cyclically to discover new endpoints worth pivoting to and make attempts to gain access via RDP or Impacket.</p>",
+      "TTP_ID": "5eda5811d845d500175c0716",
+      "TTPDetails": {
+        "title": "Remote Desktop Protocol",
+        "description": "Remote Desktop Protocol attack allows hackers to move across internal network by hijacking RDP sessions of other users, or connect via RDP with known credentials or brute-force",
+        "number": "T1021.001",
+        "stage": "10: Lateral Movement"
+      }
+    },
+    {
+      "procedure": "<p>UAT-5918 pivots across endpoints enumerating local and shared drives to find data of interest to the threat actor. This data may include everything that furthers the APT\u2019s strategic and tactical goals and ranges from confidential documents, DB exports and backups to application configuration files. In one instance, the threat actor used the SQLCMD.exe utility to create a database backup that could be exfiltrated:&nbsp;</p>\n<p><br></p>\n<p>C:/ProgramData/SQLCMD.EXE -S &lt;target_server_DB&gt; -U &lt;username&gt; -P &lt;password&gt; -Q BACKUP DATABASE &lt;NAME&gt; to disk='&lt;db_backup_location&gt;.bak'&nbsp;</p>",
+      "TTP_ID": "5ff5e9864f7abf0017fd30ad",
+      "TTPDetails": {
+        "title": "Data from Local System",
+        "description": "Data from Local System attack allows adversaries to search local system sources, such as file systems or local databases, to find files of interest and sensitive data prior to Exfiltration. Adversaries can use a Command and Scripting Interpreter, such as cmd, or use Automated Collection on the local system.",
+        "number": "T1005",
+        "stage": "11: Collection"
+      }
+    },
+    {
+      "procedure": "<p>The \u201creg\u201d system command is used to take dumps of the SAM, SECURITY and SYSTEM hives:</p>",
+      "TTP_ID": "5ff39a8d18d9c00017529b21",
+      "TTPDetails": {
+        "title": "Query Registry",
+        "description": "Query Registry attack enables adversaries to interact with the Windows Registry to gather information about the system, configuration, and installed software to shape follow-on attack steps including whether or not to fully infect the target and/or attempts other specific actions.",
+        "number": "T1012",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>Credential harvesting is a key tactic in UAT-5918 intrusions, instrumented via the use of tools such as Mimikatz, LaZagne, and browser credential stealers.</p>",
+      "TTP_ID": "5e578a85f51c645aba4eb60b",
+      "TTPDetails": {
+        "title": "OS Credential Dumping",
+        "description": "OS Credential Dumping attacks obtain hashed or a clear text password from already compromised hosts using password stealing tools like Mimikatz",
+        "number": "T1003",
+        "stage": "08: Credential Access"
+      }
+    }
+  ],
+  "relatedMalwareDetails": [
+    {
+      "title": "FRP (Reverse proxy tool)",
+      "description": null
+    },
+    {
+      "title": "Neo-reGeorg (Reverse proxy tool)",
+      "description": null
+    },
+    {
+      "title": "Fscan (Network Scanner Tool)",
+      "description": null
+    },
+    {
+      "title": "In-Swor (Network Scanning Tool)",
+      "description": null
+    },
+    {
+      "title": "PortBrute (Brute Force Tool)",
+      "description": null
+    },
+    {
+      "title": "NirSoft CurrPorts (Network Monitoring Tool)",
+      "description": null
+    },
+    {
+      "title": "TCPView (Network Monitoring Tool)",
+      "description": null
+    },
+    {
+      "title": "NetSpy (Tool)",
+      "description": null
+    },
+    {
+      "title": "JuicyPotato (Privilege Escalation Tool)",
+      "description": null
+    },
+    {
+      "title": "PuTTY (Tool)",
+      "description": null
+    },
+    {
+      "title": "Meterpreter (Backdoor)",
+      "description": "Meterpreter is a malicious trojan-type program that allows cyber criminals to remotely control infected computers. This malware runs in computer memory without writing anything to disk. Therefore, it injects itself into compromised processes and does not create any new processes."
+    },
+    {
+      "title": "Mimikatz (Cred Dump Tool)",
+      "description": null
+    },
+    {
+      "title": "LaZagne (Cred Dump Tool)",
+      "description": null
+    },
+    {
+      "title": "BrowserDataLite (Browser Information Tool)",
+      "description": null
+    },
+    {
+      "title": "SNETCracker (Brute Force Tool)",
+      "description": null
+    },
+    {
+      "title": "Impacket (Network Tool)",
+      "description": null
+    }
+  ],
+  "relatedActorDetails": [
+    {
+      "_id": "67dd85bf02c17a89d6952732",
+      "title": "UAT-5918",
+      "location": "Unknown",
+      "breachCount": 1,
+      "latestBreachDate": "2025-03-21T10:00:47.000Z",
+      "relatedBreaches": [
+        "67dc05458f5a820fd25fd5a0"
+      ],
+      "affectedIndustries": [
+        "Critical Infrastructure",
+        "Education",
+        "Healthcare",
+        "Software & IT",
+        "Telecom"
+      ],
+      "affectedTechnologies": [
+        "Windows (Endpoint OS)"
+      ],
+      "ttps": [
+        "5e578a85f51c645aba4eb60b",
+        "5e578a89f51c645aba4ec798",
+        "5e578a8ef51c645aba4eea69",
+        "5e578a93f51c645aba4f0709",
+        "5e5bf3a5f0f95e001718f6d8",
+        "5eb5b286b13b9900175fb9fa",
+        "5ed16000504ff500173ca8f5",
+        "5ed66a2393b8b800174afd06",
+        "5eda5811d845d500175c0716",
+        "5f9c00e9877bb400171a48b2",
+        "5f9c0302877bb400171a48b3",
+        "5f9c0937877bb400171a48b5",
+        "5f9c0b2d877bb400171a48b6",
+        "5fa56d3d21faba0017155c7a",
+        "5fac401109c34e0017dfb8b3",
+        "5fe344d7ddf96b001749040b",
+        "5ff39a8d18d9c00017529b21",
+        "5ff3b07118d9c00017529b22",
+        "5ff5e9864f7abf0017fd30ad",
+        "5ff85f6681609b001739004e",
+        "5ffcb6679a80110017c933a5",
+        "5ffcb9469a80110017c933a7",
+        "600700f07cd3ef0017995a35",
+        "60070e377cd3ef0017995a4c",
+        "600716437cd3ef0017995a59",
+        "600716a17cd3ef0017995a5a",
+        "601afe9ea2de3c0015a52340",
+        "619611aafc0a680016b0c73c"
+      ],
+      "malware": [
+        "BrowserDataLite (Browser Information Tool)",
+        "FRP (Reverse proxy tool)",
+        "Fscan (Network Scanner Tool)",
+        "Impacket (Network Tool)",
+        "In-Swor (Network Scanning Tool)",
+        "JuicyPotato (Privilege Escalation Tool)",
+        "LaZagne (Cred Dump Tool)",
+        "Meterpreter (Backdoor)",
+        "Mimikatz (Cred Dump Tool)",
+        "Neo-reGeorg (Reverse proxy tool)",
+        "NetSpy (Tool)",
+        "NirSoft CurrPorts (Network Monitoring Tool)",
+        "PortBrute (Brute Force Tool)",
+        "PuTTY (Tool)",
+        "SNETCracker (Brute Force Tool)",
+        "TCPView (Network Monitoring Tool)"
+      ],
+      "relatedIocs": {
+        "domains": [],
+        "ips": [],
+        "hashesMd5": [],
+        "hashesSha1": [],
+        "hashesSha256": [
+          "02ab315e4e3cf71c1632c91d4914c21b9f6e0b9aa0263f2400d6381aab759a61",
+          "09cea8aed5c58c446e6ef4d9bb83f7b5d7ba7b7c89d4164f397d378832722b69",
+          "12D4EFE2B21B5053A3A21B49F25A6A4797DC6E9A80D511F29CA67039BA361F63",
+          "1753fa34babeeee3b20093b72987b7f5e257270f86787c81a556790cb322c747",
+          "2272925B1E83C7C3AB24BDEB82CE727DB84F5268C70744345CDA41B452C49E84",
+          "234899dea0a0e91c67c7172204de3a92a4cbeef37cdc10f563bf78343234ad1d",
+          "31742ab79932af3649189b9287730384215a8dccdf21db50de320da7b3e16bb4",
+          "3588bda890ebf6138a82ae2e4f3cd7234ec071f343c9f5db5a96a54734eeaf9f",
+          "497A326C6C207C1FB49E4DAD81D051FCF6BCBE047E0D3FE757C298EF8FE99ABA",
+          "5b0f8c650f54f17d002c01dcc74713a40eccb0367357d3f86490e9d17fcd71e8",
+          "6F6F7AA6144A1CFE61AC0A80DB7AD712440BDC5730644E05794876EB8B6A41B4",
+          "71EB5115E8C47FFF1AB0E7ACEBAEA7780223683259A2BB1B8DB1EB3F26878CA4",
+          "7EF22BFB6B2B2D23FE026BDFD7D2304427B6B62C6F9643EFEDDB4820EBF865AF",
+          "8d440c5f0eca705c6d27aa4883c9cc4f8711de30fea32342d44a286b362efa9a",
+          "95eee44482b4226efe3739bed3fa6ce7ae7db407c1e82e988f27cd27a31b56a6",
+          "A774244ea5d759c4044aea75128a977e45fd6d1bb5942d9a8a1c5d7bff7e3db9",
+          "B7690c0fc9ec32e1a54663a2e5581e6260fe9318a565a475ee8a56c0638f38d0",
+          "B994CBC1B5C905A2B731E47B30718C684521E8EC6AFB601AFECF30EF573E5153",
+          "BAB01D029556CF6290F6F21FEC5932E13399F93C5FDBCFFD3831006745F0EB83",
+          "D1825cd7a985307c8585d88d247922c3a51835f9338dc76c10cdbad859900a03",
+          "D47e35baee57eb692065a2295e3e9de40e4c57dba72cb39f9acb9f564c33b421",
+          "DD832C8E30ED50383495D370836688EE48E95334270CBBCE41109594CB0C9FD1",
+          "E159824448A8E53425B38BD11030AA786C460F956C9D7FC118B212E8CED4087A",
+          "EFC0D2C1E05E106C5C36160E17619A494676DEB136FB877C6D26F3ADF75A5777",
+          "F4ea99dc41cb7922d01955eef9303ec3a24b88c3318138855346de1e830ed09e",
+          "F7B52EE613F8D4E55A69F0B93AA9AA5472E453B0C458C8390DB963FF8B0B769C",
+          "F7F6D0AFB300B57C32853D49FF50650F5D1DC7CF8111AA32FF658783C038BFE5",
+          "F9EB34C34E4A91630F265F12569F70B83FEBA039C861D6BF906B74E7FB308648",
+          "Ffb8db57b543ba8a5086640a0b59a5def4929ad261e9f3624b2c0a22ae380391"
+        ],
+        "mitre": [],
+        "cves": []
+      }
+    }
+  ]
+}

@@ -27,6 +27,7 @@ All components have been successfully implemented and tested:
 - Validates STIX patterns using the OASIS STIX Pattern Validator
 - Batch processing of multiple TruKno breach IDs
 - Organizes output in timestamped directories
+- Maintains persistent ID mappings via SQLite database to ensure object consistency
 
 ## Installation
 
@@ -70,6 +71,7 @@ Optional arguments:
 
 - `-o, --output`: Specify the output file path for the STIX bundle (default: input_file_stix.json)
 - `--no-validate`: Skip STIX pattern validation (useful if you want to proceed with potentially invalid patterns)
+- `--db-file`: Path to SQLite database file for ID mapping (default: trukno_stix_mapping.db)
 
 Example:
 
@@ -88,6 +90,7 @@ python process_trukno_ids.py breach_id1 breach_id2 breach_id3
 Optional arguments:
 
 - `--api-key`: Specify the TruKno API key (if not provided, uses TRUKNO_API_KEY environment variable)
+- `--db-file`: Path to SQLite database file for ID mapping (default: trukno_stix_mapping.db)
 
 Example:
 
@@ -145,3 +148,46 @@ To disable validation, use the `--no-validate` flag.
 ## Additional Documentation
 
 See `trukno_stix_mapping.md` for the detailed mapping between TruKno API fields and STIX 2.1 objects.
+
+## Persistent ID Mapping
+
+The converter maintains a SQLite database (`trukno_stix_mapping.db` by default) to ensure consistent ID mapping between TruKno objects and STIX objects. This means that the same TruKno entity (e.g., a specific malware, actor, or CVE) will always map to the same STIX ID across different runs and conversions.
+
+This feature is particularly useful when:
+- Converting multiple breach reports that reference the same entities
+- Updating existing STIX data with new information
+- Ensuring consistency in STIX data across your threat intelligence ecosystem
+
+The database schema includes separate tables for different object types:
+- `identity_mapping`: Maps TruKno authors and industries to STIX Identity objects
+- `attack_pattern_mapping`: Maps TruKno TTPs to STIX Attack Pattern objects
+- `malware_mapping`: Maps TruKno malware to STIX Malware objects
+- `threat_actor_mapping`: Maps TruKno actors to STIX Threat Actor objects
+- `indicator_mapping`: Maps TruKno IOCs to STIX Indicator objects
+- `vulnerability_mapping`: Maps TruKno CVEs to STIX Vulnerability objects
+- `report_mapping`: Maps TruKno breaches to STIX Report objects
+
+## Testing ID Consistency
+
+A test script is provided to verify that the SQLite database correctly maintains ID consistency:
+
+```bash
+python test_id_consistency.py breach_id
+```
+
+This script:
+1. Processes the same breach ID twice
+2. Compares the STIX IDs between both runs
+3. Verifies that all objects have consistent IDs
+4. Provides statistics on the database content
+
+Optional arguments:
+- `--api-key`: Specify the TruKno API key (if not provided, uses TRUKNO_API_KEY environment variable)
+- `--db-file`: Path to SQLite database file (default: trukno_stix_mapping.db)
+
+Example:
+```bash
+python test_id_consistency.py 67dc05458f5a820fd25fd5a0
+```
+
+If the test passes successfully, you'll see a confirmation that all IDs match between runs, which indicates that the persistent ID mapping is working correctly.

@@ -32,7 +32,7 @@ def create_output_dir() -> str:
     print(f"Created output directory: {output_dir}")
     return output_dir
 
-def process_breach_id(api: TruKnoAPI, breach_id: str, output_dir: str) -> None:
+def process_breach_id(api: TruKnoAPI, breach_id: str, output_dir: str, db_file: str) -> None:
     """
     Process a single breach ID:
     1. Fetch the data from TruKno API
@@ -74,7 +74,12 @@ def process_breach_id(api: TruKnoAPI, breach_id: str, output_dir: str) -> None:
         
         # Convert the data
         try:
-            converter = TruKnoToSTIXConverter(temp_input_path, stix_output_path)
+            converter = TruKnoToSTIXConverter(
+                temp_input_path, 
+                stix_output_path,
+                validate_patterns=True,
+                db_file=db_file
+            )
             converter.convert()
             print(f"Completed processing for breach ID: {breach_id}")
         except Exception as e:
@@ -94,6 +99,7 @@ def main():
     )
     parser.add_argument('breach_ids', nargs='+', help='One or more TruKno breach IDs to process')
     parser.add_argument('--api-key', help='TruKno API key (defaults to TRUKNO_API_KEY environment variable)')
+    parser.add_argument('--db-file', default='trukno_stix_mapping.db', help='Path to SQLite database file for ID mapping')
     
     args = parser.parse_args()
     
@@ -115,7 +121,7 @@ def main():
     # Process each breach ID
     for breach_id in args.breach_ids:
         try:
-            process_breach_id(api, breach_id, output_dir)
+            process_breach_id(api, breach_id, output_dir, args.db_file)
         except Exception as e:
             print(f"Error processing breach ID {breach_id}: {str(e)}")
     
@@ -125,6 +131,7 @@ def main():
     print(f"\nSummary:")
     print(f"Processed {len(args.breach_ids)} breach IDs")
     print(f"Output directory: {output_dir}")
+    print(f"Using database file: {args.db_file}")
 
 if __name__ == "__main__":
     main() 

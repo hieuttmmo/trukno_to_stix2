@@ -5,6 +5,7 @@ import uuid
 import datetime
 import argparse
 import os
+import sqlite3
 from typing import Dict, List, Any, Optional, Set, Tuple
 
 try:
@@ -27,7 +28,7 @@ class TruKnoToSTIXConverter:
     Based on the mapping defined in trukno_stix_mapping.md
     """
     
-    def __init__(self, input_file: str, output_file: str = None, validate_patterns: bool = True):
+    def __init__(self, input_file: str, output_file: str = None, validate_patterns: bool = True, db_file: str = "trukno_stix_mapping.db"):
         """
         Initialize the converter with input and output file paths.
         
@@ -35,6 +36,7 @@ class TruKnoToSTIXConverter:
             input_file: Path to the TruKno JSON file
             output_file: Path to save the STIX Bundle (optional)
             validate_patterns: Whether to validate STIX patterns (default: True)
+            db_file: Path to SQLite database file for ID mapping (default: trukno_stix_mapping.db)
         """
         self.input_file = input_file
         self.output_file = output_file or self._generate_output_filename(input_file)
@@ -47,6 +49,113 @@ class TruKnoToSTIXConverter:
             "invalid_patterns": 0,
             "errors": []
         }
+        self.db_file = db_file
+        self.db_conn = None
+        self._setup_database()
+        
+    def _setup_database(self):
+        """Set up the SQLite database for ID mapping"""
+        db_exists = os.path.exists(self.db_file)
+        self.db_conn = sqlite3.connect(self.db_file)
+        
+        if not db_exists:
+            cursor = self.db_conn.cursor()
+            # Create tables for different object types
+            cursor.execute('''
+            CREATE TABLE identity_mapping (
+                trukno_id TEXT PRIMARY KEY,
+                stix_id TEXT NOT NULL,
+                name TEXT NOT NULL,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+            ''')
+            
+            cursor.execute('''
+            CREATE TABLE attack_pattern_mapping (
+                trukno_id TEXT PRIMARY KEY,
+                stix_id TEXT NOT NULL,
+                name TEXT NOT NULL,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+            ''')
+            
+            cursor.execute('''
+            CREATE TABLE malware_mapping (
+                trukno_id TEXT PRIMARY KEY,
+                stix_id TEXT NOT NULL,
+                name TEXT NOT NULL,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+            ''')
+            
+            cursor.execute('''
+            CREATE TABLE threat_actor_mapping (
+                trukno_id TEXT PRIMARY KEY,
+                stix_id TEXT NOT NULL,
+                name TEXT NOT NULL,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+            ''')
+            
+            cursor.execute('''
+            CREATE TABLE indicator_mapping (
+                trukno_id TEXT PRIMARY KEY,
+                stix_id TEXT NOT NULL,
+                value TEXT NOT NULL,
+                type TEXT NOT NULL,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+            ''')
+            
+            cursor.execute('''
+            CREATE TABLE vulnerability_mapping (
+                trukno_id TEXT PRIMARY KEY,
+                stix_id TEXT NOT NULL,
+                cve_id TEXT NOT NULL,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+            ''')
+            
+            cursor.execute('''
+            CREATE TABLE report_mapping (
+                trukno_id TEXT PRIMARY KEY,
+                stix_id TEXT NOT NULL,
+                name TEXT NOT NULL,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+            ''')
+            
+            self.db_conn.commit()
+            print(f"Created new database: {self.db_file}")
+        else:
+            print(f"Using existing database: {self.db_file}")
+
+    def _get_or_create_stix_id(self, table: str, trukno_id: str, name: str, prefix: str) -> str:
+        """
+        Get an existing STIX ID from the database or create a new one
+        
+        Args:
+            table: Database table name
+            trukno_id: TruKno object ID
+            name: Object name for reference
+            prefix: STIX ID prefix (e.g., 'malware', 'attack-pattern', etc.)
+            
+        Returns:
+            STIX ID
+        """
+        cursor = self.db_conn.cursor()
+        cursor.execute(f"SELECT stix_id FROM {table} WHERE trukno_id = ?", (trukno_id,))
+        result = cursor.fetchone()
+        
+        if result:
+            return result[0]
+        
+        # Create new ID and store mapping
+        stix_id = f"{prefix}--{self._generate_deterministic_uuid(prefix + ':' + name)}"
+        cursor.execute(f"INSERT INTO {table} (trukno_id, stix_id, name) VALUES (?, ?, ?)", 
+                     (trukno_id, stix_id, name))
+        self.db_conn.commit()
+        return stix_id
         
     def _generate_output_filename(self, input_file: str) -> str:
         """Generate an output filename based on the input filename"""
@@ -101,6 +210,10 @@ class TruKnoToSTIXConverter:
                     print(f"  {i}. Pattern: {error['pattern']}")
                     print(f"     Error: {error['error']}")
                     print()
+        
+        # Close the database connection
+        if self.db_conn:
+            self.db_conn.close()
     
     def _validate_stix_pattern(self, pattern: str) -> Tuple[bool, Optional[str]]:
         """
@@ -130,7 +243,14 @@ class TruKnoToSTIXConverter:
         """Create Identity objects for organizations and authors"""
         # Create identity for the author
         if "author" in self.trukno_data and self.trukno_data["author"]:
-            author_id = f"identity--{self._generate_deterministic_uuid('author:' + self.trukno_data['author'])}"
+            trukno_id = f"author:{self.trukno_data['author']}"
+            author_id = self._get_or_create_stix_id(
+                "identity_mapping", 
+                trukno_id, 
+                self.trukno_data['author'], 
+                "identity"
+            )
+            
             author = stix2.Identity(
                 id=author_id,
                 name=self.trukno_data["author"],
@@ -149,7 +269,14 @@ class TruKnoToSTIXConverter:
                 if not industry:
                     continue
                     
-                industry_id = f"identity--{self._generate_deterministic_uuid('industry:' + industry)}"
+                trukno_id = f"industry:{industry}"
+                industry_id = self._get_or_create_stix_id(
+                    "identity_mapping", 
+                    trukno_id, 
+                    industry, 
+                    "identity"
+                )
+                
                 industry_obj = stix2.Identity(
                     id=industry_id,
                     name=industry,
@@ -174,6 +301,15 @@ class TruKnoToSTIXConverter:
             if not ttp_details.get("title"):
                 continue
                 
+            # Use the TTP_ID if available, otherwise use the title
+            trukno_id = procedure.get("TTP_ID", f"ttp:{ttp_details['title']}")
+            attack_pattern_id = self._get_or_create_stix_id(
+                "attack_pattern_mapping", 
+                trukno_id, 
+                ttp_details['title'], 
+                "attack-pattern"
+            )
+            
             # Set up external references if MITRE ATT&CK number exists
             external_refs = []
             if ttp_details.get("number"):
@@ -195,7 +331,6 @@ class TruKnoToSTIXConverter:
                     })
             
             # Create the Attack Pattern object
-            attack_pattern_id = f"attack-pattern--{self._generate_deterministic_uuid('attack-pattern:' + ttp_details['title'])}"
             attack_pattern = stix2.AttackPattern(
                 id=attack_pattern_id,
                 name=ttp_details["title"],
@@ -217,8 +352,18 @@ class TruKnoToSTIXConverter:
             if not malware_details.get("title"):
                 continue
                 
+            # Get the malware ID if it's in the data, otherwise use the title
+            malware_id_key = "id" if "id" in malware_details else "_id"
+            trukno_id = malware_details.get(malware_id_key, f"malware:{malware_details['title']}")
+            
+            malware_id = self._get_or_create_stix_id(
+                "malware_mapping", 
+                trukno_id, 
+                malware_details['title'], 
+                "malware"
+            )
+            
             # Create the Malware object
-            malware_id = f"malware--{self._generate_deterministic_uuid('malware:' + malware_details['title'])}"
             malware = stix2.Malware(
                 id=malware_id,
                 name=malware_details["title"],
@@ -240,6 +385,17 @@ class TruKnoToSTIXConverter:
                 if not actor_details.get("title"):
                     continue
                 
+                # Get the actor ID if it's in the data, otherwise use the title
+                actor_id_key = "id" if "id" in actor_details else "_id"
+                trukno_id = actor_details.get(actor_id_key, f"actor:{actor_details['title']}")
+                
+                actor_id = self._get_or_create_stix_id(
+                    "threat_actor_mapping", 
+                    trukno_id, 
+                    actor_details['title'], 
+                    "threat-actor"
+                )
+                
                 # Prepare description with location information
                 description = actor_details.get("description", "")
                 if actor_details.get("location"):
@@ -249,7 +405,6 @@ class TruKnoToSTIXConverter:
                     description += f"Location/Country of operation: {actor_details['location']}"
                 
                 # Create the Threat Actor object without using 'countries'
-                actor_id = f"threat-actor--{self._generate_deterministic_uuid('actor:' + actor_details['title'])}"
                 actor = stix2.ThreatActor(
                     id=actor_id,
                     name=actor_details["title"],
@@ -296,7 +451,22 @@ class TruKnoToSTIXConverter:
             
             self.validation_results['valid_patterns'] += 1
                 
-            indicator_id = f"indicator--{self._generate_deterministic_uuid('indicator:' + ioc_value)}"
+            # Create a unique ID for this indicator
+            trukno_id = f"indicator:{ioc_type}:{ioc_value}"
+            
+            # Store the indicator type as well for reference
+            cursor = self.db_conn.cursor()
+            cursor.execute("SELECT stix_id FROM indicator_mapping WHERE trukno_id = ?", (trukno_id,))
+            result = cursor.fetchone()
+            
+            if result:
+                indicator_id = result[0]
+            else:
+                indicator_id = f"indicator--{self._generate_deterministic_uuid('indicator:' + ioc_value)}"
+                cursor.execute("INSERT INTO indicator_mapping (trukno_id, stix_id, value, type) VALUES (?, ?, ?, ?)", 
+                               (trukno_id, indicator_id, ioc_value, ioc_type))
+                self.db_conn.commit()
+            
             indicator = stix2.Indicator(
                 id=indicator_id,
                 name=f"{ioc_type.upper()}: {ioc_value}",
@@ -360,7 +530,25 @@ class TruKnoToSTIXConverter:
             if not cve_id:
                 continue
                 
-            vuln_id = f"vulnerability--{self._generate_deterministic_uuid('vulnerability:' + cve_id)}"
+            # Use the CVE ID as the TruKno ID
+            trukno_id = f"vulnerability:{cve_id}"
+            vuln_id = self._get_or_create_stix_id(
+                "vulnerability_mapping", 
+                trukno_id, 
+                cve_id, 
+                "vulnerability"
+            )
+            
+            # Also store the CVE ID specifically
+            cursor = self.db_conn.cursor()
+            cursor.execute("SELECT cve_id FROM vulnerability_mapping WHERE trukno_id = ?", (trukno_id,))
+            result = cursor.fetchone()
+            
+            if not result:
+                cursor.execute("UPDATE vulnerability_mapping SET cve_id = ? WHERE trukno_id = ?", 
+                               (cve_id, trukno_id))
+                self.db_conn.commit()
+            
             external_refs = [{
                 "source_name": "cve",
                 "external_id": cve_id
@@ -384,96 +572,55 @@ class TruKnoToSTIXConverter:
         indicators = [obj for obj in self.stix_objects if isinstance(obj, stix2.Indicator)]
         vulnerabilities = [obj for obj in self.stix_objects if isinstance(obj, stix2.Vulnerability)]
         
+        # Helper function to create and store relationships
+        def create_relationship(source_id, target_id, relationship_type):
+            # Generate a unique ID for this relationship
+            rel_key = f"{source_id}:{relationship_type}:{target_id}"
+            rel_id = f"relationship--{self._generate_deterministic_uuid('relationship:' + rel_key)}"
+            
+            relationship = stix2.Relationship(
+                id=rel_id,
+                relationship_type=relationship_type,
+                source_ref=source_id,
+                target_ref=target_id
+            )
+            self.stix_objects.append(relationship)
+            self.object_refs.append(relationship.id)
+        
         # Threat Actor -> uses -> Malware
         for actor in threat_actors:
             for malware in malwares:
-                rel_id = f"relationship--{self._generate_deterministic_uuid('relationship:' + actor.id + ':uses:' + malware.id)}"
-                relationship = stix2.Relationship(
-                    id=rel_id,
-                    relationship_type="uses",
-                    source_ref=actor.id,
-                    target_ref=malware.id
-                )
-                self.stix_objects.append(relationship)
-                self.object_refs.append(relationship.id)
+                create_relationship(actor.id, malware.id, "uses")
         
         # Threat Actor -> uses -> Attack Pattern
         for actor in threat_actors:
             for attack_pattern in attack_patterns:
-                rel_id = f"relationship--{self._generate_deterministic_uuid('relationship:' + actor.id + ':uses:' + attack_pattern.id)}"
-                relationship = stix2.Relationship(
-                    id=rel_id,
-                    relationship_type="uses",
-                    source_ref=actor.id,
-                    target_ref=attack_pattern.id
-                )
-                self.stix_objects.append(relationship)
-                self.object_refs.append(relationship.id)
+                create_relationship(actor.id, attack_pattern.id, "uses")
         
         # Threat Actor -> targets -> Vulnerability
         for actor in threat_actors:
             for vuln in vulnerabilities:
-                rel_id = f"relationship--{self._generate_deterministic_uuid('relationship:' + actor.id + ':targets:' + vuln.id)}"
-                relationship = stix2.Relationship(
-                    id=rel_id,
-                    relationship_type="targets",
-                    source_ref=actor.id,
-                    target_ref=vuln.id
-                )
-                self.stix_objects.append(relationship)
-                self.object_refs.append(relationship.id)
+                create_relationship(actor.id, vuln.id, "targets")
         
         # Malware -> uses -> Attack Pattern
         for malware in malwares:
             for attack_pattern in attack_patterns:
-                rel_id = f"relationship--{self._generate_deterministic_uuid('relationship:' + malware.id + ':uses:' + attack_pattern.id)}"
-                relationship = stix2.Relationship(
-                    id=rel_id,
-                    relationship_type="uses",
-                    source_ref=malware.id,
-                    target_ref=attack_pattern.id
-                )
-                self.stix_objects.append(relationship)
-                self.object_refs.append(relationship.id)
+                create_relationship(malware.id, attack_pattern.id, "uses")
         
         # Malware -> exploits -> Vulnerability
         for malware in malwares:
             for vuln in vulnerabilities:
-                rel_id = f"relationship--{self._generate_deterministic_uuid('relationship:' + malware.id + ':exploits:' + vuln.id)}"
-                relationship = stix2.Relationship(
-                    id=rel_id,
-                    relationship_type="exploits",
-                    source_ref=malware.id,
-                    target_ref=vuln.id
-                )
-                self.stix_objects.append(relationship)
-                self.object_refs.append(relationship.id)
+                create_relationship(malware.id, vuln.id, "exploits")
         
         # Indicator -> indicates -> Malware
         for indicator in indicators:
             for malware in malwares:
-                rel_id = f"relationship--{self._generate_deterministic_uuid('relationship:' + indicator.id + ':indicates:' + malware.id)}"
-                relationship = stix2.Relationship(
-                    id=rel_id,
-                    relationship_type="indicates",
-                    source_ref=indicator.id,
-                    target_ref=malware.id
-                )
-                self.stix_objects.append(relationship)
-                self.object_refs.append(relationship.id)
+                create_relationship(indicator.id, malware.id, "indicates")
         
         # Indicator -> indicates -> Attack Pattern
         for indicator in indicators:
             for attack_pattern in attack_patterns:
-                rel_id = f"relationship--{self._generate_deterministic_uuid('relationship:' + indicator.id + ':indicates:' + attack_pattern.id)}"
-                relationship = stix2.Relationship(
-                    id=rel_id,
-                    relationship_type="indicates",
-                    source_ref=indicator.id,
-                    target_ref=attack_pattern.id
-                )
-                self.stix_objects.append(relationship)
-                self.object_refs.append(relationship.id)
+                create_relationship(indicator.id, attack_pattern.id, "indicates")
     
     def _create_report_object(self) -> None:
         """Create the main Report object for the breach"""
@@ -481,6 +628,17 @@ class TruKnoToSTIXConverter:
         if not self.trukno_data.get("title"):
             return
             
+        # Use the breach ID if available, otherwise use the title
+        breach_id_key = "id" if "id" in self.trukno_data else "_id"
+        trukno_id = self.trukno_data.get(breach_id_key, f"report:{self.trukno_data['title']}")
+        
+        report_id = self._get_or_create_stix_id(
+            "report_mapping", 
+            trukno_id, 
+            self.trukno_data['title'], 
+            "report"
+        )
+        
         # Set up external references
         external_refs = []
         if self.trukno_data.get("url"):
@@ -517,7 +675,6 @@ class TruKnoToSTIXConverter:
             published = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
             
         # Create the Report object
-        report_id = f"report--{self._generate_deterministic_uuid('report:' + self.trukno_data['title'])}"
         report = stix2.Report(
             id=report_id,
             name=self.trukno_data["title"],
@@ -543,13 +700,15 @@ def main():
     parser.add_argument('input_file', help='Path to the TruKno JSON file')
     parser.add_argument('-o', '--output', help='Path to save the STIX Bundle (default: input_file_stix.json)')
     parser.add_argument('--no-validate', action='store_true', help='Skip pattern validation')
+    parser.add_argument('--db-file', default='trukno_stix_mapping.db', help='Path to SQLite database file for ID mapping')
     
     args = parser.parse_args()
     
     converter = TruKnoToSTIXConverter(
         args.input_file, 
         args.output,
-        not args.no_validate
+        not args.no_validate,
+        args.db_file
     )
     converter.convert()
 
