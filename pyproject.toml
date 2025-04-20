@@ -5,7 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "cytaxii2>=1.0.0",
+    "pandas>=2.2.3",
     "requests>=2.32.3",
     "stix2>=3.0.1",
     "stix2-patterns>=2.0.0",
+    "taxii2-client>=2.3.0",
 ]

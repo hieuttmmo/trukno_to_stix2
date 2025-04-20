@@ -11,6 +11,7 @@ All components have been successfully implemented and tested:
 - ✅ Batch processing tool working as expected
 - ✅ Pattern validation implemented
 - ✅ Error handling and recovery in place
+- ✅ TAXII push functionality with two implementations
 
 ## Features
 
@@ -28,6 +29,7 @@ All components have been successfully implemented and tested:
 - Batch processing of multiple TruKno breach IDs
 - Organizes output in timestamped directories
 - Maintains persistent ID mappings via SQLite database to ensure object consistency
+- Pushes STIX data to TAXII servers with multiple client options
 
 ## Installation
 
@@ -190,4 +192,80 @@ Example:
 python test_id_consistency.py 67dc05458f5a820fd25fd5a0
 ```
 
-If the test passes successfully, you'll see a confirmation that all IDs match between runs, which indicates that the persistent ID mapping is working correctly.
+
+
+## 2. Using cytaxii2 (taxii_push.py)
+
+This implementation uses the `cytaxii2` library which provides a more robust and user-friendly interface for interacting with TAXII servers. This is the recommended implementation for most users.
+
+### Features
+
+- Hardcoded server configuration (no command-line arguments needed)
+- Detailed discovery process to understand the TAXII server structure
+- Automatic collection validation and permission checking
+- Comprehensive error handling and debugging
+- Support for both TAXII 2.0 and 2.1 versions
+
+### Usage
+
+Edit the configuration variables at the top of the script:
+
+```python
+# Configuration - Update these values for your TAXII server
+TAXII_DISCOVERY_URL = "http://localhost:8080/taxii2"
+TAXII_USERNAME = "admin@opencti.io"
+TAXII_PASSWORD = "your_password"
+TAXII_COLLECTION_ID = "collection-id"
+TAXII_VERSION = 2.1  # Using numeric value for version
+DATA_DIRECTORY = "data/trukno_run_20250413_142154"  # Directory containing STIX data
+```
+
+Then run the script:
+
+```bash
+python taxii_push.py
+```
+
+The script will:
+1. Connect to the TAXII server
+2. Perform discovery to understand the server structure
+3. List available collections and verify access permissions
+4. Find all STIX JSON files in the specified directory
+5. Push the STIX data to the specified collection
+
+### Example Output
+
+```
+2023-06-15 14:23:45,123 - __main__ - INFO - Starting TAXII push process
+2023-06-15 14:23:45,123 - __main__ - INFO - TAXII Server: http://localhost:8080/taxii2
+2023-06-15 14:23:45,123 - __main__ - INFO - TAXII Version: 2.1
+2023-06-15 14:23:45,123 - __main__ - INFO - Collection ID: 73ce6aab-45e0-4934-872f-2e4e5bb5661c
+2023-06-15 14:23:45,123 - __main__ - INFO - Found 2 STIX files in data/trukno_run_20250413_142154
+2023-06-15 14:23:45,123 - __main__ - INFO - Connecting to TAXII server at http://localhost:8080/taxii2
+2023-06-15 14:23:45,456 - __main__ - INFO - Performing TAXII discovery request...
+2023-06-15 14:23:45,789 - __main__ - INFO - TAXII Server Title: OpenCTI TAXII Server
+2023-06-15 14:23:45,789 - __main__ - INFO - Available API Roots: http://localhost:8080/taxii2/root/
+2023-06-15 14:23:45,789 - __main__ - INFO - Requesting collection information...
+2023-06-15 14:23:46,123 - __main__ - INFO - Server has 3 available collections
+2023-06-15 14:23:46,123 - __main__ - INFO - Collection: My Collection (ID: 73ce6aab-45e0-4934-872f-2e4e5bb5661c)
+2023-06-15 14:23:46,123 - __main__ - INFO - Found target collection: My Collection (ID: 73ce6aab-45e0-4934-872f-2e4e5bb5661c)
+2023-06-15 14:23:46,123 - __main__ - INFO - Collection is writable
+2023-06-15 14:23:46,123 - __main__ - INFO - Pushing data from data/trukno_run_20250413_142154/67f7ed849653310e06650643/67f7ed849653310e06650643_stix.json
+2023-06-15 14:23:46,123 - __main__ - INFO - Pushing bundle bundle--73df38ad-2c7e-46d9-a5c7-bfe034147ae9 with 21 objects to collection 73ce6aab-45e0-4934-872f-2e4e5bb5661c
+2023-06-15 14:23:46,456 - __main__ - INFO - Successfully pushed bundle to collection 73ce6aab-45e0-4934-872f-2e4e5bb5661c
+2023-06-15 14:23:46,456 - __main__ - INFO - Successfully pushed 2 out of 2 STIX files
+```
+
+## Data Directory Structure
+
+Both TAXII push implementations look for files with the `_stix.json` suffix in the provided data directory and all its subdirectories. The STIX files should contain valid STIX 2.1 bundles with a structure like:
+
+```json
+{
+    "type": "bundle",
+    "id": "bundle--uuid",
+    "objects": [
+        // STIX objects here
+    ]
+}
+```
