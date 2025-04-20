@@ -192,8 +192,6 @@ Example:
 python test_id_consistency.py 67dc05458f5a820fd25fd5a0
 ```
 
-
-
 ## 2. Using cytaxii2 (taxii_push.py)
 
 This implementation uses the `cytaxii2` library which provides a more robust and user-friendly interface for interacting with TAXII servers. This is the recommended implementation for most users.
@@ -255,6 +253,28 @@ The script will:
 2023-06-15 14:23:46,456 - __main__ - INFO - Successfully pushed bundle to collection 73ce6aab-45e0-4934-872f-2e4e5bb5661c
 2023-06-15 14:23:46,456 - __main__ - INFO - Successfully pushed 2 out of 2 STIX files
 ```
+
+### Example Results in OpenCTI
+
+After successfully pushing the STIX data to OpenCTI via TAXII, you can view the imported data in the OpenCTI interface. Here are some example screenshots:
+
+1. **OpenCTI Summary View**
+   ![OpenCTI Summary View](images/opencti-summary.png)
+
+2. **Trukno Report Overview**
+   ![Trukno Report Overview](images/opencti-trukno-report.png)
+
+3. **Report Details**
+   ![Report Details](images/opencti-trukno-report-details.png)
+
+4. **Report Entities**
+   ![Report Entities](images/opencti-trukno-report-entities.png)
+
+These screenshots demonstrate how the converted STIX data appears in OpenCTI, showing:
+- The overall summary of imported data
+- The Trukno report as a STIX Report object
+- Detailed information about the report
+- Related entities (indicators, malware, threat actors, etc.) connected to the report
 
 ## Data Directory Structure
 
