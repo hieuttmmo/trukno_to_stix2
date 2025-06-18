@@ -1,0 +1,338 @@
+{
+  "_id": "68497456646361abbc0cce89",
+  "title": "Say Hi to HelloTDS: The Infrastructure Behind FakeCaptcha",
+  "description": "A behind-the-scenes look at HelloTDS: the stealthy infrastructure driving FakeCaptcha scams, malware and more across millions of devices",
+  "date": "2025-06-11T12:18:53.000Z",
+  "url": "https://www.gendigital.com/blog/insights/research/inside-hellotds-malware-network",
+  "source": "Gendigital",
+  "author": "Vojt\u011bch Krejsa, Milan \u0160pinka",
+  "affectedIndustries": [
+    "Media & Entertainment",
+    "Cryptocurrency"
+  ],
+  "affectedTechnologies": [
+    "Brave(Web Browser)",
+    "Chrome (Web Browser)",
+    "Edge (Web Browser)",
+    "Firefox (Web Browser)",
+    "Internet Explorer (Web Browser)",
+    "Mozilla(Web Browser)",
+    "Opera (Web Browser)",
+    "Safari (Web Browser)",
+    "Windows (Endpoint OS)"
+  ],
+  "category": [
+    "Web Security",
+    "Endpoint Security"
+  ],
+  "relatedTTPs": [
+    "5eab19dd7bbde300171521dc",
+    "6818f44839230e13df1cb007",
+    "5eadb5a7ddf99300172e64fd",
+    "5e578a89f51c645aba4ec52f",
+    "5fe74f54778f4500170dc31f",
+    "5e5e8dc667cf77001710d421",
+    "5fdd156f0128e50017fbea1f",
+    "6001b3f4cdeabf0017fb4551",
+    "66f9aa9631867a7d1048b0a0",
+    "5e578a8bf51c645aba4ed28a",
+    "5ff3b07118d9c00017529b22",
+    "60070e377cd3ef0017995a4c",
+    "5f9c00e9877bb400171a48b2",
+    "5fd610d918b6e00017a02108",
+    "609ab62115f7de0015b50899",
+    "65f867655f50f3526b6ba764",
+    "5ed65d4593b8b800174afd03",
+    "5ed24592504ff500173ca8f7",
+    "5ec2874ba21f7d0017cb9c4c",
+    "5ffdf28c02b57a0017acde0c"
+  ],
+  "relatedActors": [],
+  "relatedMalware": [
+    "6537c6a8dd3502001f4e14d8",
+    "66e9aaf5ee2832370117818b",
+    "6849bcbd808764bdee0d9de0"
+  ],
+  "IOCs": [
+    {
+      "ips": [
+        "23.83.64.0",
+        "23.109.120.0",
+        "23.109.128.0",
+        "23.109.170.0",
+        "94.242.232.0",
+        "172.240.104.0",
+        "172.241.48.0",
+        "172.255.96.0",
+        "173.0.146.0",
+        "173.237.64.0",
+        "188.42.104.0",
+        "188.42.240.0",
+        "209.192.192.0",
+        "212.117.184.0"
+      ],
+      "ipsWithRange": [
+        "23.83.64.0",
+        "23.109.120.0",
+        "23.109.128.0",
+        "23.109.170.0",
+        "94.242.232.0",
+        "172.240.104.0",
+        "172.241.48.0",
+        "172.255.96.0",
+        "173.0.146.0",
+        "173.237.64.0",
+        "188.42.104.0",
+        "188.42.240.0",
+        "209.192.192.0",
+        "212.117.184.0"
+      ],
+      "domains": [
+        "dailyuploads.net",
+        "streamtape.to",
+        "streamtape.net",
+        "streamtape.to",
+        "watchadsontape.com",
+        "bigwarp.art",
+        "savefiles.com",
+        "yr.unasonoric.com",
+        "gq.binesyorker.com",
+        "sb.rowlandpodogyn.shop",
+        "nutatedtriol.com",
+        "mixscoggan.shop",
+        "bu.unrimedironize.shop",
+        "actednow.com",
+        "buzzflying.shop",
+        "goldtera.live",
+        "orbito.online",
+        "bestfree4u.com",
+        "avs4u.net",
+        "arcadeclassic.org",
+        "adelaidavizcaino.com",
+        "partage-de-medias.fly.storage.tigris.dev",
+        "finding-from-internet.fly.storage.tigris.dev"
+      ],
+      "hashesMd5": [],
+      "hashesSha1": [],
+      "hashesSha256": [],
+      "mitre": [],
+      "cves": []
+    }
+  ],
+  "procedures": [
+    {
+      "procedure": "<p>Interestingly, some of the URLs served by HelloTDS redirect victims to FakeCaptcha landing pages, but when accessed in a controlled environment, they often mimic some legitimate websites and serve some benign content. One example of such a website is https://avs4u.net/?sub1=39388&amp;sub2=\u2026&amp;sub3=ID&amp;sub4=677886&amp;sub5=0.0004752 \u2014 while it often redirects the victims to FakeCaptcha landing pages, it may also display mimicked content of the legitimate website www.avs4you.com, a software for processing videos and images. The downloadable binary is also legitimate, indicating an attempt to conceal malicious activity.</p>\n<p><br></p>\n<p>Another example of a URL redirecting victims to FakeCaptcha but serving legitimate content in a controlled environment is https://arcadeclassic.org/?sub1=681978&amp;sub2=0.00037565.</p>",
+      "TTP_ID": "5ffdf28c02b57a0017acde0c",
+      "TTPDetails": {
+        "title": "Execution Guardrails",
+        "description": "Execution Guardrails technique allows adversaries to constrain execution or actions based on adversary supplied environment-specific conditions that are expected to be present on the target. Guardrails ensure that a payload only executes against an intended target (specific network share names, attached physical devices, files, joined Active Directory domains, and local/external IP addresses) and reduces collateral damage from an adversary\u2019s campaign.",
+        "number": "T1480",
+        "stage": "07: Defense Evasion"
+      }
+    },
+    {
+      "procedure": "<p>Besides ad networks, the primary source of traffic for HelloTDS are legitimate-looking, properly functioning websites, such as movie streaming sites, torrent mirrors, file-sharing services, link shorteners, or porn websites. However, these websites are specifically crafted or manipulated\u2014presumably also by the attacker\u2014to cooperate with the attacker\u2019s infrastructure and load malicious scripts. This tactic completely bypasses the need for malvertising campaigns through \u201clegitimate\u201d advertising companies, as these websites request the attacker\u2019s scripts directly.</p>\n<p><br></p>\n<p>Moreover, we have observed a repeating pattern in some of these websites, which offer file sharing services and promise their users financial gains. These include dailyuploads.net, streamtape.{com,net,to}, watchadsontape.com, bigwarp.art or savefiles.com to name a few.</p>",
+      "TTP_ID": "6001b3f4cdeabf0017fb4551",
+      "TTPDetails": {
+        "title": "Web Services (Acquire Infrastructure)",
+        "description": "Before compromising a victim, adversaries may register for web services that can be used during targeting. A variety of popular websites exist for adversaries to register for a web-based service that can be abused during later stages of the adversary lifecycle, such as during Command and Control (Web Service) or Exfiltration Over Web Service. Using common services, such as those offered by Google or Twitter, makes it easier for adversaries to hide in expected noise. By utilizing a web service, adversaries can make it difficult to physically tie back operations to them.",
+        "number": "T1583.006",
+        "stage": "02: Resource Development"
+      }
+    },
+    {
+      "procedure": "<p>We suspect that these websites are cloned from some existing file sharing service and controlled by the same threat actor who controls HelloTDS and eventually delivers FakeCaptcha, for the primary purpose of embedding malicious popups and redirects within the page (although email &amp; password harvesting could be a \u201cwelcome\u201d byproduct).</p>\n<p><br></p>\n<p>An \u201centry point\u201d website, like those described previously, will usually statically embed one or more HTML snippets loading remote JavaScript that look like this:</p>\n<p>&nbsp;<img height=\"161px;\" src=\"https://lh7-rt.googleusercontent.com/slidesz/AGV_vUfNm6CAr0inevgFXHfuCj2_uRspf_D0ZvIIj7pby87ENvN5d7ggo3xkZ_FemMXJu96Dr_I8nKpKkcW1-lwgKc6RyNViC14fdB9oIlYlwVAbYajq9qhtdeJzK-W0UnStYYaa7Dytiw=s2048?key=mxnwOeNYxDn4hXdznkV_KGuL\" width=\"764px;\"/>&nbsp;</p>",
+      "TTP_ID": "66f9aa9631867a7d1048b0a0",
+      "TTPDetails": {
+        "title": "Content Injection",
+        "description": "Content Injection attack may allow adversaries to gain access and continuously communicate with victims by injecting malicious content into systems through online network traffic. Rather than luring victims to malicious payloads hosted on a compromised website (i.e., Drive-by Target followed by Drive-by Compromise), adversaries may initially access victims through compromised data-transfer channels where they can manipulate traffic and/or inject their own content. These compromised online network channels may also be used to deliver additional payloads (i.e., Ingress Tool Transfer) and other data to already compromised systems.",
+        "number": "T1659 ",
+        "stage": "03: Initial Access"
+      }
+    },
+    {
+      "procedure": "<p>We visited the website dailyuploads.net, uploaded an arbitrary image file, and navigated to the link generated by the service. The resulting page included a script from HelloTDS, and when we clicked the download link, we were involuntarily redirected to a FakeCaptcha landing page attempting to trick visitors into executing the Emmenhtal loader.</p>",
+      "TTP_ID": "5fdd156f0128e50017fbea1f",
+      "TTPDetails": {
+        "title": "Malicious Link",
+        "description": "Malicious Link attack relies upon a user clicking a malicious link in a phishing email in order to gain execution. Clicking on the malicious link may also lead to other execution techniques such as exploitation of a browser, application vulnerability, or downloading files that require execution via malicious file.",
+        "number": "T1204.001",
+        "stage": "04: Execution"
+      }
+    },
+    {
+      "procedure": "<p>We visited the website dailyuploads.net, uploaded an arbitrary image file, and navigated to the link generated by the service. The resulting page included a script from HelloTDS, and when we clicked the download link, we were involuntarily redirected to a FakeCaptcha landing page attempting to trick visitors into executing the Emmenhtal loader.</p>\n<p><br></p>\n<p>The final step in the HelloTDS pipeline is a simple JavaScript-based redirect to the target URL.</p>\n<p><br></p>\n<p>In the past months, we have seen a highly predictable pattern in the malicious URL payloads served by HelloTDS: Almost universally, they were machine-generated domains consisting of a couple of English words and a \u201c.com\u201d, \u201c.shop\u201d, \u201c.online\u201d, \u201c.info\u201d, \u201c.live\u201d, \u201c.pro\u201d or similar TLD, and the URL path was a string with 24 hexadecimal digits, the first two usually being 67 or 68. These URLs served as simple redirects, either to FakeCaptcha, or sometimes to a decoy\u2014usually some (benign but potentially unwanted) browser extension or cryptocurrency product website. We have seen multiple of these URLs redirect to both a FakeCaptcha landing page and a decoy at different times, which removes any doubt about this being an inherently malicious service. Example URLs include the following:</p>\n<p><br></p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;actednow.com/675cb495c39bc481ddf8edd6,</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;buzzflying.shop/6767af2ee2aa535e92d62a64,</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;goldtera.live/6758b1d6467532a801fa06c4,</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;orbito.online/677120fb2cca41d88a7392a2.</p>",
+      "TTP_ID": "5eadb5a7ddf99300172e64fd",
+      "TTPDetails": {
+        "title": "URL Redirect",
+        "description": "URL Redirect technique allows an adversary to redirect users to compromised legitimate websites before redirecting to a malicious website or send benign files (like Pdf) with malicious URL to bypass security systems.",
+        "number": "",
+        "stage": "07: Defense Evasion"
+      }
+    },
+    {
+      "procedure": "<p>The FakeCaptcha campaigns have become a widespread malware infection vector, using clever social engineering and exploiting internet users\u2019 confusion about common CAPTCHA practices to trick victims into infecting their own computers, typically with information-stealing malware like LummaC2, by pasting malicious commands into the Windows Run dialog.&nbsp;</p>",
+      "TTP_ID": "6818f44839230e13df1cb007",
+      "TTPDetails": {
+        "title": "Malicious Copy and Paste",
+        "description": "Malicious Copy and Paste allows an adversary to rely upon a user copying and pasting code in order to gain execution. Users may be subjected to social engineering to get them to copy and paste code directly into a Command and Scripting Interpreter. This attack technique is also ClickFix technique. It is essentially an attempt to execute a malicious command on the victim\u2019s computer relying solely on social engineering techniques. Under one pretext or another, attackers convince the user to copy a long command line (in the vast majority of cases \u2014 a PowerShell script), paste it into the system\u2019s Run window, and press Enter, which should ultimately lead to compromising the system.\n\nThe attack normally begins with a pop-up window simulating a notification about a technical problem. To fix this problem, the user needs to perform a few simple steps, which boil down to copying some object and executing it through the Run application. However, in Windows 11, PowerShell can also be executed from the search bar for applications, settings, and documents, which opens when you click on the icon with the system\u2019s logo, so sometimes the victim is asked to copy something there.",
+        "number": "T1204.004",
+        "stage": "04: Execution"
+      }
+    },
+    {
+      "procedure": "<p>The FakeCaptcha campaigns have become a widespread malware infection vector, using clever social engineering and exploiting internet users\u2019 confusion about common CAPTCHA practices to trick victims into infecting their own computers, typically with information-stealing malware like LummaC2, by pasting malicious commands into the Windows Run dialog.&nbsp;</p>\n<p><br></p>\n<p>We have discovered an elaborate infrastructure actively used to deliver multiple variants of FakeCaptcha and other malicious content to select users. At the core of the operation is an attacker-controlled Traffic Direction System network. It has a single purpose\u2014to fingerprint the visitor\u2019s device and network details to determine what type of content to deliver. This could be malicious, monetized or decoy content, or no content at all. For reasons we will describe later, we are calling this infrastructure HelloTDS.</p>\n<p>&nbsp;<img height=\"477px;\" src=\"https://lh7-rt.googleusercontent.com/slidesz/AGV_vUdrAgQwsVpdiD6Axppz2XpMIyhTfLf5L1bbXZjdI9iikwVtSEayRrRZJeyUs6dj6HfGIVJMbUB3N5DT1z0KH7-L58pF0ZrDkMML1W1qRgb29ETahbtmFur0wmyHcwoKNz7borbLpg=s2048?key=mxnwOeNYxDn4hXdznkV_KGuL\" width=\"761px;\"/>&nbsp;</p>",
+      "TTP_ID": "5eab19dd7bbde300171521dc",
+      "TTPDetails": {
+        "title": "Fake CAPTCHA",
+        "description": "Fake CAPTCHA technique uses fake CAPTCHA walls to disguise malicious content by preventing automated URL analysis systems from accessing the actual content of phishing pages, to trick unsuspecting users to receive unwanted ads even when the site isn\u2019t open, etc.",
+        "number": "",
+        "stage": "04: Execution"
+      }
+    },
+    {
+      "procedure": "<p>At a high level, the attack works as follows: The victim visits an infected website or clicks on a malicious ad. The entry website requests a JavaScript file from the initial HelloTDS endpoint, which fingerprints the connection and decides whether to serve content or stay idle.</p>\n<p>&nbsp;<img height=\"540px;\" src=\"https://lh7-rt.googleusercontent.com/slidesz/AGV_vUd8TJQh98i1zAZwruY1HcOdSNvNfm662G5A6LAVs4adYbEsjR0CUVqcqBb9OfTglEIQBG36FbZdTclRtBogkmVzjStYb8JmWlrx-rRY_LAIp0DTkuA3Dg8KeO_d6xd1bXHC_pnEMQ=s2048?key=mxnwOeNYxDn4hXdznkV_KGuL\" width=\"620px;\"/>&nbsp;</p>",
+      "TTP_ID": "5e578a89f51c645aba4ec52f",
+      "TTPDetails": {
+        "title": "JavaScript / JScript",
+        "description": "JavaScript / JScript attack maliciously modifies a website's design or manipulate key  parameter (for example, cookies, url links, etc.) to steal sensitive user input",
+        "number": "T1059.007",
+        "stage": "04: Execution"
+      }
+    },
+    {
+      "procedure": "<p>Among users who passed the initial check, FakeCaptcha was observed to be the most prevalent malicious landing page, with Fake Updates, file downloads containing encrypted malware, tech scams and other fraudulent campaigns also having a share.&nbsp;</p>\n<p><br></p>\n<p>Crucially, the JavaScript sent by the server contains an encrypted configuration variable \u2014 a JSON string where each alphanumeric character is substituted with some other. This obfuscation is not unique to HelloTDS; however suspicious it may be for an ad network to employ this technique, we have also observed this behaviour in scripts employed by the Czechia-based Clickadu ad network, which happens to share certain characteristics with the threat actor\u2019s infrastructure.</p>",
+      "TTP_ID": "5e5e8dc667cf77001710d421",
+      "TTPDetails": {
+        "title": "Obfuscated Files or Information",
+        "description": "Obfuscated Files or Information attack uses encoding or encryption to change the signature & fingerprint of malicious code to bypass security software algorithms.",
+        "number": "T1027",
+        "stage": "07: Defense Evasion"
+      }
+    },
+    {
+      "procedure": "<p>The source domain is randomly rotated and both path segments are randomly generated (although their length and character sets are always the same), presumably to prevent static detection. Despite this, it is easy to spot these URLs with a human eye (or a clustering algorithm). All the HelloTDS domains we have seen so far have the same format: The apex domain consists of 2-3 (pseudo)words with a \u201c.top\u201d, \u201c.shop\u201d or sometimes \u201c.com\u201d TLD; optionally, a short subdomain is used, consisting of usually 2, but up to 4 random letters.</p>\n<p><br></p>\n<p>Examples of these domains include:</p>\n<p><br></p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;yr.unasonoric.com</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;gq.binesyorker.com</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;sb.rowlandpodogyn.shop</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;nutatedtriol.com</p>",
+      "TTP_ID": "5e578a8bf51c645aba4ed28a",
+      "TTPDetails": {
+        "title": "Domain Generation Algorithm (DGA)",
+        "description": "Domain Generation Algorithm attack produces random domain names that can become the address of the C&C server for evasion of malicious domain blacklisting",
+        "number": "T1568.002",
+        "stage": "12: Command & Control"
+      }
+    },
+    {
+      "procedure": "<p>The server will respond with a large JavaScript that performs heavy client-side fingerprinting and eventually performs a subsequent request to another HelloTDS endpoint. Either way, the server sets a pair of cookies in the response; these encode information about the client\u2019s browser, operating system and network, as detected by the server, and may be used as a client-side cache for further requests (although we have found that tampering with them is generally not useful).</p>\n<p><br></p>\n<p>The JavaScript collects certain information like the approximate amount of physical memory and the number of processor cores.</p>",
+      "TTP_ID": "5ff3b07118d9c00017529b22",
+      "TTPDetails": {
+        "title": "System Information Discovery",
+        "description": "System Information Discovery attack is used by an adversary to get detailed information about the operating system and hardware, including version, patches, hotfixes, service packs, and architecture to shape follow-on attack steps including whether or not to fully infect the target and/or attempts other specific actions.",
+        "number": "T1082",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>The server will respond with a large JavaScript that performs heavy client-side fingerprinting and eventually performs a subsequent request to another HelloTDS endpoint. Either way, the server sets a pair of cookies in the response; these encode information about the client\u2019s browser, operating system and network, as detected by the server, and may be used as a client-side cache for further requests (although we have found that tampering with them is generally not useful).</p>",
+      "TTP_ID": "5f9c00e9877bb400171a48b2",
+      "TTPDetails": {
+        "title": "System Network Configuration Discovery",
+        "description": "System Network Configuration Discovery attack look for details about the network configuration and settings of systems they access or through information discovery of remote systems. Several operating system administration utilities exist (e.g. Arp, Ipconfig/Ifconfig, Nbtstat, and Route) that can be used to gather this information.",
+        "number": "T1016",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>The server will respond with a large JavaScript that performs heavy client-side fingerprinting and eventually performs a subsequent request to another HelloTDS endpoint. Either way, the server sets a pair of cookies in the response; these encode information about the client\u2019s browser, operating system and network, as detected by the server, and may be used as a client-side cache for further requests (although we have found that tampering with them is generally not useful).</p>\n<p><br></p>\n<p>The JavaScript collects certain information like the basic browser info: window width and height, document referrer, window location (URL), browser language, current datetime, time zone offset, and whether the site is shown in a top-level window or an iframe.</p>",
+      "TTP_ID": "60070e377cd3ef0017995a4c",
+      "TTPDetails": {
+        "title": "Browser Information Discovery",
+        "description": "Browser Information Discovery technique allows an adversary to numerate information about browsers to learn more about compromised environments. Data saved by browsers (such as bookmarks, accounts, and browsing history) may reveal a variety of personal information about users (e.g., banking sites, relationships/interests, social media, etc.) as well as details about internal network resources such as servers, tools/dashboards, or other related infrastructure.\n\nBrowser information may also highlight additional targets after an adversary has access to valid credentials, especially Credentials In Files associated with logins cached by a browser.\n\nSpecific storage locations vary based on platform and/or application, but browser information is typically stored in local files and databases (e.g., %APPDATA%/Google/Chrome).",
+        "number": "T1217",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>The cookie values contain Zlib-compressed binary data encoded in Base64. Although the low-level data format is unknown, the data itself contains readable ASCII strings like the client\u2019s IP address, country, or ISP, which reveal the purpose these cookies likely serve.</p>",
+      "TTP_ID": "5fd610d918b6e00017a02108",
+      "TTPDetails": {
+        "title": "Standard Encoding",
+        "description": "Standard Encoding attack encodes data with a standard data encoding system to make the content of command and control traffic more difficult to detect. Common data encoding schemes include ASCII, Unicode, hexadecimal, Base64, and MIME.",
+        "number": "T1132.001",
+        "stage": "12: Command & Control"
+      }
+    },
+    {
+      "procedure": "<p>The cookie values contain Zlib-compressed binary data encoded in Base64. Although the low-level data format is unknown, the data itself contains readable ASCII strings like the client\u2019s IP address, country, or ISP, which reveal the purpose these cookies likely serve.</p>",
+      "TTP_ID": "609ab62115f7de0015b50899",
+      "TTPDetails": {
+        "title": "System Location Discovery",
+        "description": "System Location Discovery technique allows adversaries to gather information in an attempt to calculate the geographical location of a victim host o shape follow-on behaviors, including whether or not to infects the target based on their physical location. Adversaries may attempt to infer the location of a system using various system checks, such as time zone, keyboard layout, and/or language settings. Windows API functions such as GetLocaleInfoW can also be used to determine the locale of the host. In cloud environments, an instance's availability zone may also be discovered by accessing the instance metadata service from the instance. Adversaries may also attempt to infer the location of a victim host using IP address, such as via online geolocation IP-lookup services.",
+        "number": "T1614",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>The JavaScript collects certain information like the network information, e.g., network type (Wi-Fi, Ethernet, cellular, \u2026), effective and maximum bandwidth, or the estimated round-trip time.</p>",
+      "TTP_ID": "65f867655f50f3526b6ba764",
+      "TTPDetails": {
+        "title": "Wi-Fi Discovery",
+        "description": "Wi-Fi Discovery allows an adversary to search for information about Wi-Fi networks, such as network names and passwords, on compromised systems. Adversaries may use Wi-Fi information as part of Account Discovery, Remote System Discovery, and other discovery or Credential Access activity to support both ongoing and future campaigns.\n\nAdversaries may collect various types of information about Wi-Fi networks from hosts. For example, on Windows names and passwords of all Wi-Fi networks a device has previously connected to may be available through netsh wlan show profiles to enumerate Wi-Fi names and then netsh wlan show profile \"Wi-Fi name\" key=clear to show a Wi-Fi network\u2019s corresponding password.[1][2][3] Additionally, names and other details of locally reachable Wi-Fi networks can be discovered using calls to wlanAPI.dll Native API functions.[4]\n\nOn Linux, names and passwords of all Wi-Fi-networks a device has previously connected to may be available in files under /etc/NetworkManager/system-connections/.[5] On macOS, the password of a known Wi-Fi may be identified with security find-generic-password -wa wifiname (requires admin username/password).",
+        "number": "T1016.002",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>A JSON object containing this information (as well as some keys from the config) is Base64-encoded and sent in the md parameter to the rotated URL from the config via a POST request. The response contains a JSON object with a \u201curl\u201d key as well as a TTL and bidding details.</p>\n<p>&nbsp;<img height=\"287px;\" src=\"https://lh7-rt.googleusercontent.com/slidesz/AGV_vUfyh_JL-xtBTDbr4yjvOZy9X4NeKawFviUA5n8r6Fr5fJRU02xT6zSWYcwUQFSwl145Soz0CfOXzDINNrG_MmVnH_qbtVicvPTknA8ZTZ3c9ZUIm98sgyvdWOZRlT17ZQGuwc-auA=s2048?key=mxnwOeNYxDn4hXdznkV_KGuL\" width=\"775px;\"/>&nbsp;</p>",
+      "TTP_ID": "5ed65d4593b8b800174afd03",
+      "TTPDetails": {
+        "title": "Web Protocols",
+        "description": "Web Protocols attack uses application layer protocols associated with web traffic to avoid detection/network filtering by blending in with existing traffic by embedding C2 communication within the HTTP / HTTPS protocol traffic between the client and server. HTTP / HTTPS packets have many fields and headers in which data can be concealed.",
+        "number": "T1071.001",
+        "stage": "12: Command & Control"
+      }
+    },
+    {
+      "procedure": "<p>In this case, bestfree4u[.]com simply responded with a 301 redirect to a FakeCaptcha landing page at finding-from-internet.fly.storage.tigris.dev/seacrh-result[.]html. However, when accessed from a different environment, the same domain may seem harmless. In other cases, the final HelloTDS redirect leads to tech support scams, malicious file downloads, fake browser updates, potentially unwanted browser extensions, or cryptocurrency investment platforms.</p>",
+      "TTP_ID": "5ec2874ba21f7d0017cb9c4c",
+      "TTPDetails": {
+        "title": "Browser Extensions",
+        "description": "Browser Extensions attack uses internet browser extensions or plugins (for browsers like Chrome, Firefox, Edge, or Safari)  to automatically browse to websites in the background, steal all information that a user enters into a browser (including credentials), modify Google search results, and can be used as an installer for a RAT for persistence.",
+        "number": "T1176",
+        "stage": "05: Persistence"
+      }
+    },
+    {
+      "procedure": "<p>In this case, bestfree4u[.]com simply responded with a 301 redirect to a FakeCaptcha landing page at finding-from-internet.fly.storage.tigris.dev/seacrh-result[.]html. However, when accessed from a different environment, the same domain may seem harmless. In other cases, the final HelloTDS redirect leads to tech support scams, malicious file downloads, fake browser updates, potentially unwanted browser extensions, or cryptocurrency investment platforms.</p>",
+      "TTP_ID": "5ed24592504ff500173ca8f7",
+      "TTPDetails": {
+        "title": "Cryptocurrency Theft",
+        "description": "Cryptocurrency Theft attack steals from exchanges, wallets, and other cryptocurrency custody services using techniques like SIM swapping, phishing, web skimming, URL hijacking, etc. to take over user and administrator accounts",
+        "number": "",
+        "stage": "14: Impact"
+      }
+    },
+    {
+      "procedure": "<p>We suspect that these websites are cloned from some existing file sharing service and controlled by the same threat actor who controls HelloTDS and eventually delivers FakeCaptcha, for the primary purpose of embedding malicious popups and redirects within the page (although email &amp; password harvesting could be a \u201cwelcome\u201d byproduct).</p>",
+      "TTP_ID": "5fe74f54778f4500170dc31f",
+      "TTPDetails": {
+        "title": "Input Capture",
+        "description": "Input Capture attack uses various methods to capture user input to obtain credentials or collect information via login pages/portals or system dialog boxes. Input capture mechanisms may be transparent to the user (e.g. Credential API Hooking) or rely on deceiving the user into providing input into what they believe to be a genuine service (e.g. Web Portal Capture).",
+        "number": "T1056",
+        "stage": "11: Collection"
+      }
+    }
+  ],
+  "relatedMalwareDetails": [
+    {
+      "title": "LummaStealer (Info Stealer)",
+      "description": null
+    },
+    {
+      "title": "Emmenhtal (Malware Loader)",
+      "description": null
+    },
+    {
+      "title": "HelloTDS (Malware TDS)",
+      "description": null
+    }
+  ]
+}

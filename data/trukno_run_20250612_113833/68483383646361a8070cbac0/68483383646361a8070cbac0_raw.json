@@ -1,0 +1,339 @@
+{
+  "_id": "68483383646361a8070cbac0",
+  "title": "When Samsung's Magic Turns Tragic: A Tale of Unauthorized Mining",
+  "description": "Learn more about active exploitation of a critical security flaw (CVE-2025-4632) within Samsung MagicINFO 9 Server installations, and how to protect your\u2026",
+  "date": "2025-06-11T13:29:54.000Z",
+  "url": "https://www.esentire.com/blog/when-samsungs-magic-turns-tragic-a-tale-of-unauthorized-mining",
+  "source": "eSentire",
+  "author": "",
+  "affectedIndustries": [
+    "Cryptocurrency"
+  ],
+  "affectedTechnologies": [
+    "Windows (Endpoint OS)"
+  ],
+  "category": [
+    "Endpoint Security"
+  ],
+  "relatedTTPs": [
+    "5e578a93f51c645aba4f070c",
+    "5e578a93f51c645aba4f06ad",
+    "5fac401109c34e0017dfb8b3",
+    "602d69852d1e80001512a94e",
+    "5fa20fcacdccc300172a252d",
+    "5ffdef6502b57a0017acde0b",
+    "5e578a93f51c645aba4f0709",
+    "5f9c0302877bb400171a48b3",
+    "5fa9b45e10b9fb0017eeab0d",
+    "5fe3517cddf96b001749040f",
+    "5f9c0937877bb400171a48b5",
+    "5e578a93f51c645aba4f06df",
+    "5fe34472ddf96b001749040a",
+    "5eda5811d845d500175c0716",
+    "5fce49a1f4d5f3001723bb35",
+    "66bf54e3c63d1734d15755be",
+    "5ff85f6681609b001739004e",
+    "5f9c0b2d877bb400171a48b6",
+    "5f7f69d79b57b30017ab46ff",
+    "679a4666fc296ae41c3be303",
+    "5e5e8dc667cf77001710d421",
+    "5ed65d4593b8b800174afd03",
+    "60098be35eddce0017a79379",
+    "60097dfe5eddce0017a79360"
+  ],
+  "relatedActors": [],
+  "relatedMalware": [
+    "6636ae461fa141fed100c1a5",
+    "608692afc48a4f3a9017a065"
+  ],
+  "IOCs": [
+    {
+      "ips": [
+        "157.230.106.100",
+        "173.249.48.227",
+        "185.213.26.27"
+      ],
+      "ipsWithRange": [
+        "157.230.106.100",
+        "173.249.48.227",
+        "185.213.26.27"
+      ],
+      "domains": [
+        "crmmr.icc.me"
+      ],
+      "hashesMd5": [
+        "2b9c5f6f01a7a06beeb533967a6e23ef",
+        "93d9d7b19403a6b794cbf4277e66bca0",
+        "c0ed4f906576c06d861302e8cf924309",
+        "5b8961a8c3b6ca1d1e2ef3155c7c1b53",
+        "d9c1409e32a1b33070bed3a295123e66",
+        "0c0195c48b6b8582fa6f6373032118da"
+      ],
+      "hashesSha1": [],
+      "hashesSha256": [
+        "9303b671778422754bcf8fc97cd99f9f19173473ff515a6956bc61bc1de84389",
+        "e482617f9e9066bb875e2973bf3f469074cb266ec270deed933b8bd27070f62b",
+        "8e1c569508baacd7803f80728c03ed1d6ab098a1576c6470420e7a3af84c489c",
+        "116fbb00ecdfe1ff4a9511e096c30a233b02be54d38e9a3d6a7e43a3205b1640",
+        "a8607309f60e9f1fac7f850d0daa8c41986a4fede610852b9e3ef8a3d5527a59",
+        "11bd2c9f9e2397c9a16e0990e4ed2cf0679498fe0fd418a3dfdac60b5c160ee5"
+      ],
+      "mitre": [],
+      "cves": [
+        "CVE-2025-4632"
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "procedure": "<p>During mid-May 2025, eSentire's Threat Response Unit (TRU) identified active exploitation of a critical security flaw (CVE-2025-4632) within Samsung MagicINFO 9 Server installations. This vulnerability enables unauthenticated malicious actors to write arbitrary files, including webshells, with system-level privileges.</p>",
+      "TTP_ID": "5e578a93f51c645aba4f070c",
+      "TTPDetails": {
+        "title": "Vulnerabilities",
+        "description": "Vulnerabilities attack happens when known security flaws in computer hardware or software are exploited by an adversary to cause unintended or unanticipated behavior to occur.  Adversaries may find vulnerability information by searching for open databases or gaining access to closed vulnerability databases.",
+        "number": "T1588.006",
+        "stage": "02: Resource Development"
+      }
+    },
+    {
+      "procedure": "<p>This vulnerability enables unauthenticated malicious actors to write arbitrary files, including webshells, with system-level privileges.<br>\nThis can be leveraged to achieve complete Remote Code Execution (RCE) capabilities on affected systems, providing unauthorized initial access to compromised servers.<br>\nInitial Access: Threat actors leveraged CVE-2025-4632 to gain Remote Code Execution (RCE) capabilities on vulnerable systems.&nbsp;</p>",
+      "TTP_ID": "5e578a93f51c645aba4f06ad",
+      "TTPDetails": {
+        "title": "Remote Code Execution (RCE)",
+        "description": "Remote Code Execution (RCE) attack uses system vulnerabilities to remotely execute arbitrary commands or code on a target machine or process over the network to install malware, elevate privileges, etc.",
+        "number": "",
+        "stage": "04: Execution"
+      }
+    },
+    {
+      "procedure": "<p>Initial Access: Threat actors leveraged CVE-2025-4632 to gain Remote Code Execution (RCE) capabilities on vulnerable systems.<br>\nThe attack began with the exploitation of a critical vulnerability in Samsung MagicINFO 9 Server (CVE-2025-4632), which allows unauthenticated attackers to execute arbitrary commands on affected systems. This vulnerability is actively exploited in the wild, with public exploit code available, and has a CVSS score of 9.8, highlighting its high severity.&nbsp;</p>",
+      "TTP_ID": "5fac401109c34e0017dfb8b3",
+      "TTPDetails": {
+        "title": "Exploit Public-Facing Application",
+        "description": "Exploit Public-Facing Application attack attempting to take advantage of a weakness in an Internet-facing computer or program using software, data, or commands in order to cause unintended or unanticipated behavior.",
+        "number": "T1190",
+        "stage": "03: Initial Access"
+      }
+    },
+    {
+      "procedure": "<p>AnyDesk remote management tool was installed for remote control.<br>\nThe attacker then executed AnyDesk, retrieved the installation ID, and configured a new profile with extensive capabilities, including audio input, clipboard, file manager, VPN, and session recording, among others.&nbsp;</p>",
+      "TTP_ID": "602d69852d1e80001512a94e",
+      "TTPDetails": {
+        "title": "Remote Access Software",
+        "description": "Remote Access Software attack enables an adversary to use legitimate desktop support and remote access software, such as Team Viewer, Go2Assist, LogMein, AmmyyAdmin, etc, to establish an interactive command and control channel to target systems within networks. They may also be used as a component of malware to establish a reverse connection or back-connect to a service or adversary controlled system.",
+        "number": "T1219",
+        "stage": "12: Command & Control"
+      }
+    },
+    {
+      "procedure": "<p>A variant of the XMRig cryptocurrency miner was installed<br>\nThe purpose was unauthorized Monero (XMR) mining<br>\n<br>\nThe attacker utilized both PowerShell (win.ps1) and batch scripts (win.bat) to download and execute XMRig, a Monero crypto-currency miner and dependencies. The scripts additionally employed multiple fallback mechanisms, including PowerShell, certutil, and curl, to ensure successful payload delivery even if some utilities were disabled or blocked.<br>\n<br>\nThe final stage of the attack involved the installation and execution of XMRig, an open-source Monero miner, renamed as smi2.exe to evade detection. The miner was configured to use system resources for illicit cryptocurrency mining, leading to potential performance degradation and increased operational costs for the victim organization.&nbsp;</p>",
+      "TTP_ID": "5fa20fcacdccc300172a252d",
+      "TTPDetails": {
+        "title": "Resource Hijacking",
+        "description": "Resource Hijacking attack leverages the resources of co-opted systems in order to solve resource intensive problems which may impact system and/or hosted service availability (e.g. digital currency mining).",
+        "number": "T1496",
+        "stage": "14: Impact"
+      }
+    },
+    {
+      "procedure": "<p>The malware was disguised as \"smi2.exe\"&nbsp;</p>",
+      "TTP_ID": "5ffdef6502b57a0017acde0b",
+      "TTPDetails": {
+        "title": "Masquerading",
+        "description": "Masquerading attack allows adversaries to manipulate features of their artifacts to make them appear legitimate or benign to users and/or security tools by making the name or location of an object, legitimate or malicious for the sake of evading defenses and observation. This may include manipulating file metadata, tricking users into misidentifying the file type, and giving legitimate task or service names. Renaming abusable system utilities to evade security monitoring is also a form of Masquerading.",
+        "number": "T1036 ",
+        "stage": "07: Defense Evasion"
+      }
+    },
+    {
+      "procedure": "<p>Utilized both PowerShell and batch scripts<br>\nThe attack sequence was highly automated, with all initial commands executed within a two-minute window, indicating the use of scripted exploitation rather than manual intrusion.</p>",
+      "TTP_ID": "5f9c0302877bb400171a48b3",
+      "TTPDetails": {
+        "title": "Windows Command Shell",
+        "description": "Windows Command Shell attack abuses the Windows command shell to control almost any aspect of a system (with right privileges) including cmd.exe to execute various commands & payloads.",
+        "number": "T1059.003",
+        "stage": "04: Execution"
+      }
+    },
+    {
+      "procedure": "<p>Utilized both PowerShell and batch scripts<br>\nThe attacker utilized both PowerShell (win.ps1) and batch scripts (win.bat) to download and execute XMRig, a Monero crypto-currency miner and dependencies. The scripts additionally employed multiple fallback mechanisms, including PowerShell, certutil, and curl, to ensure successful payload delivery even if some utilities were disabled or blocked.<br>\n<br>\n<img src=\"https://esentire-dot-com-assets.s3.amazonaws.com/assetsV3/Blog/Blog-Images/A-Tale-of-Unauthorized-Mining-image1.png\" width=\"811\" height=\"487\"/></p>",
+      "TTP_ID": "5e578a93f51c645aba4f0709",
+      "TTPDetails": {
+        "title": "PowerShell",
+        "description": "PowerShell is a form of fileless attack where hackers abuse legitimate admin command-line interface & scripting environment in the Windows OS to discover information,  or download and run executables on disk or in memory without touching disk.",
+        "number": "T1059.001",
+        "stage": "04: Execution"
+      }
+    },
+    {
+      "procedure": "<p>Implemented multiple fallback mechanisms to ensure successful payload delivery and execution.</p>",
+      "TTP_ID": "5fa9b45e10b9fb0017eeab0d",
+      "TTPDetails": {
+        "title": "Fallback Channels",
+        "description": "Fallback Channels attack uses alternate communication channels if the primary channel is compromised or inaccessible in order to maintain reliable command and control and to avoid data transfer thresholds.",
+        "number": "T1008",
+        "stage": "12: Command & Control"
+      }
+    },
+    {
+      "procedure": "<p>Employed sophisticated Windows utility manipulation&nbsp;</p>",
+      "TTP_ID": "5fe3517cddf96b001749040f",
+      "TTPDetails": {
+        "title": "Windows Service",
+        "description": "Windows Service attack may install a new service or modify an existing service by using system utilities to interact with services, by directly modifying the Registry, or by using custom tools to interact with the Windows API.",
+        "number": "T1543.003",
+        "stage": "05: Persistence"
+      }
+    },
+    {
+      "procedure": "<p>The attack began with a reconnaissance command to probe the target system for potential existing compromise. The command uses the LOLBin tasklist to search for processes matching smi2.exe - their XMRig cryptomining payload.<br>\nChecking for an existing mining process to avoid redundant infection&nbsp;</p>",
+      "TTP_ID": "5f9c0937877bb400171a48b5",
+      "TTPDetails": {
+        "title": "Process Discovery",
+        "description": "Process Discovery attack attempts to get information about running processes on a system to gain an understanding of common software/applications running on systems within the network. Adversaries may use the information from Process Discovery during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.",
+        "number": "T1057",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>The attack began with a reconnaissance command to probe the target system for potential existing compromise. The command uses the LOLBin tasklist to search for processes matching smi2.exe - their XMRig cryptomining payload.</p>",
+      "TTP_ID": "5e578a93f51c645aba4f06df",
+      "TTPDetails": {
+        "title": "Living off the Land",
+        "description": "Living off the Land technique allows an adversary to use legitimate and commodity admin tools that already exist in victim organization's environment to evade detection from anti-virus software tools.",
+        "number": "",
+        "stage": "04: Execution"
+      }
+    },
+    {
+      "procedure": "<p>The script created a new local user account \u201csamsungmid\u201d with administrative privileges and a non-expiring password \u201cSamsungmi@1234\u201d. The account was added to both the Administrators (S-1-5-32-544) and Remote Desktop Users (S-1-5-32-555) groups, facilitating privileged and RDP access.</p>",
+      "TTP_ID": "5fe34472ddf96b001749040a",
+      "TTPDetails": {
+        "title": "Local Account (Create Account)",
+        "description": "Local Account (Create Account) attack may create a local account to maintain access to victim systems. Such accounts may be used to establish secondary credentialed access that do not require persistent remote access tools to be deployed on the system.",
+        "number": "T1136.001",
+        "stage": "05: Persistence"
+      }
+    },
+    {
+      "procedure": "<p>The script created a new local user account \u201csamsungmid\u201d with administrative privileges and a non-expiring password \u201cSamsungmi@1234\u201d. The account was added to both the Administrators (S-1-5-32-544) and Remote Desktop Users (S-1-5-32-555) groups, facilitating privileged and RDP access.</p>",
+      "TTP_ID": "5eda5811d845d500175c0716",
+      "TTPDetails": {
+        "title": "Remote Desktop Protocol",
+        "description": "Remote Desktop Protocol attack allows hackers to move across internal network by hijacking RDP sessions of other users, or connect via RDP with known credentials or brute-force",
+        "number": "T1021.001",
+        "stage": "10: Lateral Movement"
+      }
+    },
+    {
+      "procedure": "<p>The script created a new local user account \u201csamsungmid\u201d with administrative privileges and a non-expiring password \u201cSamsungmi@1234\u201d. The account was added to both the Administrators (S-1-5-32-544) and Remote Desktop Users (S-1-5-32-555) groups, facilitating privileged and RDP access.</p>",
+      "TTP_ID": "5fce49a1f4d5f3001723bb35",
+      "TTPDetails": {
+        "title": "Account Manipulation",
+        "description": "Account Manipulation attack may consist of any action that preserves adversary access to a compromised account, such as modifying credentials or permission groups.",
+        "number": "T1098",
+        "stage": "05: Persistence"
+      }
+    },
+    {
+      "procedure": "<p>Defender Exclusions:<br>\nAdding directories to Defender exclusion lists&nbsp;</p>\n<p>The attacker added the %TEMP% and %MAGICINFO_PREMIUM_HOME% directories to Microsoft Defender\u2019s exclusion lists, effectively disabling antivirus scanning in directories used for staging and payload execution.&nbsp;</p>",
+      "TTP_ID": "66bf54e3c63d1734d15755be",
+      "TTPDetails": {
+        "title": "File/Path Exclusions",
+        "description": "File/Path Exclusions allows adversaries to hide their file-based artifacts by writing them to specific folders or file names excluded from antivirus (AV) scanning and other defensive capabilities. AV and other file-based scanners often include exclusions to optimize performance as well as ease installation and legitimate use of applications. These exclusions may be contextual (e.g., scans are only initiated in response to specific triggering events/alerts), but are also often hardcoded strings referencing specific folders and/or files assumed to be trusted and legitimate.",
+        "number": "T1564.012",
+        "stage": "07: Defense Evasion"
+      }
+    },
+    {
+      "procedure": "<p>The script downloaded the AnyDesk RMM tool from its official website and installed it silently into the directory C:\\Windows\\AD and configured it to start with Windows/auto-update.<br>\nThe attacker utilized both PowerShell (win.ps1) and batch scripts (win.bat) to download and execute XMRig, a Monero crypto-currency miner and dependencies. The scripts additionally employed multiple fallback mechanisms, including PowerShell, certutil, and curl, to ensure successful payload delivery even if some utilities were disabled or blocked.<br>\n<br>\nThe scripts were downloaded from 157.230.106[.]100 and crmmr[.]icc[.]me<br>\nDownloading the miner payload from the attacker\u2019s C2 infrastructure<br>\nThe script typically downloads the miner payload using .NET WebClient or other available methods and executes it with specified arguments.&nbsp;</p>",
+      "TTP_ID": "5ff85f6681609b001739004e",
+      "TTPDetails": {
+        "title": "Ingress Tool Transfer",
+        "description": "Ingress Tool Transfer may allow attackers to transfer tools or other files from an external system into a compromised environment. Files may be copied from an external adversary controlled system through the command and control channel to bring tools into the victim network or through alternate protocols with another tool such as FTP.",
+        "number": "T1105",
+        "stage": "12: Command & Control"
+      }
+    },
+    {
+      "procedure": "<p>&nbsp;The script downloaded the AnyDesk RMM tool from its official website and installed it silently into the directory C:\\Windows\\AD and configured it to start with Windows/auto-update.</p>",
+      "TTP_ID": "5f9c0b2d877bb400171a48b6",
+      "TTPDetails": {
+        "title": "File and Directory Discovery",
+        "description": "File and Directory Discovery attack enumerates files & directories or search in specific locations of a host or network share for certain information within a file system during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions. Attackers use command shell utilities like dir, tree, ls, find, and locate.",
+        "number": "T1083",
+        "stage": "09: Discovery"
+      }
+    },
+    {
+      "procedure": "<p>The script downloaded the AnyDesk RMM tool from its official website and installed it silently into the directory C:\\Windows\\AD and configured it to start with Windows/auto-update.</p>",
+      "TTP_ID": "5f7f69d79b57b30017ab46ff",
+      "TTPDetails": {
+        "title": "Registry Run Keys / Startup Folder",
+        "description": "Registry Run Keys / Startup Folder attack adds a program to a startup folder or referencing it with a Registry run key. Adding an entry to the \"run keys\" in the Registry or startup folder will cause the program referenced to be executed when a user logs in and giving it account's associated permissions level.",
+        "number": "T1547.001",
+        "stage": "05: Persistence"
+      }
+    },
+    {
+      "procedure": "<p>Approximately 1.5 days later, on May 17th, the threat actor(s) returned and executed additional commands to reinforce persistence, create additional privileged accounts, and manipulate local groups. Commands included use of net user and net localgroup to add accounts to \u201cAdministrators\u201d and \u201cRemote Desktop Users\u201d groups.</p>",
+      "TTP_ID": "679a4666fc296ae41c3be303",
+      "TTPDetails": {
+        "title": "Additional Local or Domain Groups",
+        "description": "Additional Local or Domain Groups attack may add additional local or domain groups to an adversary-controlled account to maintain persistent access to a system or domain.",
+        "number": "T1098.007 ",
+        "stage": "05: Persistence"
+      }
+    },
+    {
+      "procedure": "<p>Setting up variables for flexibility and obfuscation&nbsp;</p>",
+      "TTP_ID": "5e5e8dc667cf77001710d421",
+      "TTPDetails": {
+        "title": "Obfuscated Files or Information",
+        "description": "Obfuscated Files or Information attack uses encoding or encryption to change the signature & fingerprint of malicious code to bypass security software algorithms.",
+        "number": "T1027",
+        "stage": "07: Defense Evasion"
+      }
+    },
+    {
+      "procedure": "<p>It defines multiple mining pool endpoints across various ports (80, 88, 443, 8000, and 4443) on two different IP addresses (173.249.48[.]227 and 185.213.26[.]27), suggesting both redundancy and an attempt to evade detection by blending into legitimate traffic patterns via standard and non-standard ports.</p>",
+      "TTP_ID": "60098be35eddce0017a79379",
+      "TTPDetails": {
+        "title": "Non-Standard Port",
+        "description": "Adversaries may communicate using a protocol and port paring that are typically not associated. For example, HTTPS over port 8088[1] or port 587[2] as opposed to the traditional port 443. Adversaries may make changes to the standard port used by a protocol to bypass filtering or muddle analysis/parsing of network data.",
+        "number": "T1571",
+        "stage": "12: Command & Control"
+      }
+    },
+    {
+      "procedure": "<p>It defines multiple mining pool endpoints across various ports (80, 88, 443, 8000, and 4443) on two different IP addresses (173.249.48[.]227 and 185.213.26[.]27), suggesting both redundancy and an attempt to evade detection by blending into legitimate traffic patterns via standard and non-standard ports.</p>",
+      "TTP_ID": "5ed65d4593b8b800174afd03",
+      "TTPDetails": {
+        "title": "Web Protocols",
+        "description": "Web Protocols attack uses application layer protocols associated with web traffic to avoid detection/network filtering by blending in with existing traffic by embedding C2 communication within the HTTP / HTTPS protocol traffic between the client and server. HTTP / HTTPS packets have many fields and headers in which data can be concealed.",
+        "number": "T1071.001",
+        "stage": "12: Command & Control"
+      }
+    },
+    {
+      "procedure": "<p>During our investigation, we observed the threat actor deploying and executing AnyDesk on the compromised host, with extensive configuration via command-line arguments to enable advanced remote access features and ensure persistence. AnyDesk is a widely used remote desktop application designed for legitimate remote administration and support.</p>",
+      "TTP_ID": "60097dfe5eddce0017a79360",
+      "TTPDetails": {
+        "title": "Clipboard Data",
+        "description": "Adversaries may collect data stored in the clipboard from users copying information within or between applications.\n\nIn Windows, Applications can access clipboard data by using the Windows API.[1] OSX provides a native command, pbpaste, to grab clipboard contents.",
+        "number": "T1115",
+        "stage": "11: Collection"
+      }
+    }
+  ],
+  "relatedMalwareDetails": [
+    {
+      "title": "AnyDesk (Remote Access Tool)",
+      "description": null
+    },
+    {
+      "title": "XMRig (CryptoMiner)",
+      "description": "XMRig is a crypto miner that uses the infected computer users to mine Monero, a cryptocurrency. XMRig can cause a computer to overheat and perform poorly."
+    }
+  ]
+}

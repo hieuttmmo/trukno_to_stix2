@@ -1,0 +1,706 @@
+{
+    "type": "bundle",
+    "id": "bundle--23b5a742-db1d-4983-9be1-5f75a6aff3e8",
+    "objects": [
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--4e97ae21-faa6-5adb-9341-958d1f9db10f",
+            "created": "2025-06-12T04:41:13.834969Z",
+            "modified": "2025-06-12T04:41:13.834969Z",
+            "name": "Cryptocurrency",
+            "identity_class": "class",
+            "sectors": [
+                "Cryptocurrency"
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--2b5aa86b-a0df-4382-848d-30abea443327",
+            "created": "2025-06-12T04:41:13.839762Z",
+            "modified": "2025-06-12T04:41:13.839762Z",
+            "name": "Vulnerabilities",
+            "description": "Vulnerabilities attack happens when known security flaws in computer hardware or software are exploited by an adversary to cause unintended or unanticipated behavior to occur.  Adversaries may find vulnerability information by searching for open databases or gaining access to closed vulnerability databases.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1588.006"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--3f533593-42ab-56ec-9ad3-f304e3900bb1",
+            "created": "2025-06-12T04:41:13.841138Z",
+            "modified": "2025-06-12T04:41:13.841138Z",
+            "name": "Remote Code Execution (RCE)",
+            "description": "Remote Code Execution (RCE) attack uses system vulnerabilities to remotely execute arbitrary commands or code on a target machine or process over the network to install malware, elevate privileges, etc."
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--3f886f2a-874f-4333-b794-aa6075009b1c",
+            "created": "2025-06-12T04:41:13.841435Z",
+            "modified": "2025-06-12T04:41:13.841435Z",
+            "name": "Exploit Public-Facing Application",
+            "description": "Exploit Public-Facing Application attack attempting to take advantage of a weakness in an Internet-facing computer or program using software, data, or commands in order to cause unintended or unanticipated behavior.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1190"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--71f8be5b-4927-537b-a5a0-c6795e380a97",
+            "created": "2025-06-12T04:41:13.842534Z",
+            "modified": "2025-06-12T04:41:13.842534Z",
+            "name": "Remote Access Software",
+            "description": "Remote Access Software attack enables an adversary to use legitimate desktop support and remote access software, such as Team Viewer, Go2Assist, LogMein, AmmyyAdmin, etc, to establish an interactive command and control channel to target systems within networks. They may also be used as a component of malware to establish a reverse connection or back-connect to a service or adversary controlled system.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1219"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--cd25c1b4-935c-4f0e-ba8d-552f28bc4783",
+            "created": "2025-06-12T04:41:13.842894Z",
+            "modified": "2025-06-12T04:41:13.842894Z",
+            "name": "Resource Hijacking",
+            "description": "Resource Hijacking attack leverages the resources of co-opted systems in order to solve resource intensive problems which may impact system and/or hosted service availability (e.g. digital currency mining).",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1496"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--42e8de7b-37b2-4258-905a-6897815e58e0",
+            "created": "2025-06-12T04:41:13.843176Z",
+            "modified": "2025-06-12T04:41:13.843176Z",
+            "name": "Masquerading",
+            "description": "Masquerading attack allows adversaries to manipulate features of their artifacts to make them appear legitimate or benign to users and/or security tools by making the name or location of an object, legitimate or malicious for the sake of evading defenses and observation. This may include manipulating file metadata, tricking users into misidentifying the file type, and giving legitimate task or service names. Renaming abusable system utilities to evade security monitoring is also a form of Masquerading.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1036 "
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--d1fcf083-a721-4223-aedf-bf8960798d62",
+            "created": "2025-06-12T04:41:13.843438Z",
+            "modified": "2025-06-12T04:41:13.843438Z",
+            "name": "Windows Command Shell",
+            "description": "Windows Command Shell attack abuses the Windows command shell to control almost any aspect of a system (with right privileges) including cmd.exe to execute various commands & payloads.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1059.003"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--970a3432-3237-47ad-bcca-7d8cbb217736",
+            "created": "2025-06-12T04:41:13.843746Z",
+            "modified": "2025-06-12T04:41:13.843746Z",
+            "name": "PowerShell",
+            "description": "PowerShell is a form of fileless attack where hackers abuse legitimate admin command-line interface & scripting environment in the Windows OS to discover information,  or download and run executables on disk or in memory without touching disk.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1059.001"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--f24faf46-3b26-4dbb-98f2-63460498e433",
+            "created": "2025-06-12T04:41:13.844018Z",
+            "modified": "2025-06-12T04:41:13.844018Z",
+            "name": "Fallback Channels",
+            "description": "Fallback Channels attack uses alternate communication channels if the primary channel is compromised or inaccessible in order to maintain reliable command and control and to avoid data transfer thresholds.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1008"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--2959d63f-73fd-46a1-abd2-109d7dcede32",
+            "created": "2025-06-12T04:41:13.844272Z",
+            "modified": "2025-06-12T04:41:13.844272Z",
+            "name": "Windows Service",
+            "description": "Windows Service attack may install a new service or modify an existing service by using system utilities to interact with services, by directly modifying the Registry, or by using custom tools to interact with the Windows API.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1543.003"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--8f4a33ec-8b1f-4b80-a2f6-642b2e479580",
+            "created": "2025-06-12T04:41:13.844499Z",
+            "modified": "2025-06-12T04:41:13.844499Z",
+            "name": "Process Discovery",
+            "description": "Process Discovery attack attempts to get information about running processes on a system to gain an understanding of common software/applications running on systems within the network. Adversaries may use the information from Process Discovery during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1057"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--27fbad95-58ad-5124-9f8a-f2d763975b21",
+            "created": "2025-06-12T04:41:13.845312Z",
+            "modified": "2025-06-12T04:41:13.845312Z",
+            "name": "Living off the Land",
+            "description": "Living off the Land technique allows an adversary to use legitimate and commodity admin tools that already exist in victim organization's environment to evade detection from anti-virus software tools."
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--5d3291b9-7584-5dd6-b193-9fce03304a44",
+            "created": "2025-06-12T04:41:13.846074Z",
+            "modified": "2025-06-12T04:41:13.846074Z",
+            "name": "Local Account (Create Account)",
+            "description": "Local Account (Create Account) attack may create a local account to maintain access to victim systems. Such accounts may be used to establish secondary credentialed access that do not require persistent remote access tools to be deployed on the system.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1136.001"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--51dea151-0898-4a45-967c-3ebee0420484",
+            "created": "2025-06-12T04:41:13.846442Z",
+            "modified": "2025-06-12T04:41:13.846442Z",
+            "name": "Remote Desktop Protocol",
+            "description": "Remote Desktop Protocol attack allows hackers to move across internal network by hijacking RDP sessions of other users, or connect via RDP with known credentials or brute-force",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1021.001"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--a10641f4-87b4-45a3-a906-92a149cb2c27",
+            "created": "2025-06-12T04:41:13.846878Z",
+            "modified": "2025-06-12T04:41:13.846878Z",
+            "name": "Account Manipulation",
+            "description": "Account Manipulation attack may consist of any action that preserves adversary access to a compromised account, such as modifying credentials or permission groups.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1098"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--09b008a9-b4eb-462a-a751-a0eb58050cd9",
+            "created": "2025-06-12T04:41:13.847381Z",
+            "modified": "2025-06-12T04:41:13.847381Z",
+            "name": "File/Path Exclusions",
+            "description": "File/Path Exclusions allows adversaries to hide their file-based artifacts by writing them to specific folders or file names excluded from antivirus (AV) scanning and other defensive capabilities. AV and other file-based scanners often include exclusions to optimize performance as well as ease installation and legitimate use of applications. These exclusions may be contextual (e.g., scans are only initiated in response to specific triggering events/alerts), but are also often hardcoded strings referencing specific folders and/or files assumed to be trusted and legitimate.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1564.012"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--e6919abc-99f9-4c6c-95a5-14761e7b2add",
+            "created": "2025-06-12T04:41:13.847689Z",
+            "modified": "2025-06-12T04:41:13.847689Z",
+            "name": "Ingress Tool Transfer",
+            "description": "Ingress Tool Transfer may allow attackers to transfer tools or other files from an external system into a compromised environment. Files may be copied from an external adversary controlled system through the command and control channel to bring tools into the victim network or through alternate protocols with another tool such as FTP.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1105"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--7bc57495-ea59-4380-be31-a64af124ef18",
+            "created": "2025-06-12T04:41:13.847941Z",
+            "modified": "2025-06-12T04:41:13.847941Z",
+            "name": "File and Directory Discovery",
+            "description": "File and Directory Discovery attack enumerates files & directories or search in specific locations of a host or network share for certain information within a file system during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions. Attackers use command shell utilities like dir, tree, ls, find, and locate.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1083"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--9422fc14-1c43-410d-ab0f-a709b76c72dc",
+            "created": "2025-06-12T04:41:13.848117Z",
+            "modified": "2025-06-12T04:41:13.848117Z",
+            "name": "Registry Run Keys / Startup Folder",
+            "description": "Registry Run Keys / Startup Folder attack adds a program to a startup folder or referencing it with a Registry run key. Adding an entry to the \"run keys\" in the Registry or startup folder will cause the program referenced to be executed when a user logs in and giving it account's associated permissions level.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1547.001"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--3e6831b2-bf4c-4ae6-b328-2e7c6633b291",
+            "created": "2025-06-12T04:41:13.848363Z",
+            "modified": "2025-06-12T04:41:13.848363Z",
+            "name": "Additional Local or Domain Groups",
+            "description": "Additional Local or Domain Groups attack may add additional local or domain groups to an adversary-controlled account to maintain persistent access to a system or domain.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1098.007 "
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
+            "created": "2025-06-12T04:41:13.848644Z",
+            "modified": "2025-06-12T04:41:13.848644Z",
+            "name": "Obfuscated Files or Information",
+            "description": "Obfuscated Files or Information attack uses encoding or encryption to change the signature & fingerprint of malicious code to bypass security software algorithms.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1027"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--b18eae87-b469-4e14-b454-b171b416bc18",
+            "created": "2025-06-12T04:41:13.848886Z",
+            "modified": "2025-06-12T04:41:13.848886Z",
+            "name": "Non-Standard Port",
+            "description": "Adversaries may communicate using a protocol and port paring that are typically not associated. For example, HTTPS over port 8088[1] or port 587[2] as opposed to the traditional port 443. Adversaries may make changes to the standard port used by a protocol to bypass filtering or muddle analysis/parsing of network data.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1571"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--df8b2a25-8bdf-4856-953c-a04372b1c161",
+            "created": "2025-06-12T04:41:13.849143Z",
+            "modified": "2025-06-12T04:41:13.849143Z",
+            "name": "Web Protocols",
+            "description": "Web Protocols attack uses application layer protocols associated with web traffic to avoid detection/network filtering by blending in with existing traffic by embedding C2 communication within the HTTP / HTTPS protocol traffic between the client and server. HTTP / HTTPS packets have many fields and headers in which data can be concealed.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1071.001"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--30973a08-aed9-4edf-8604-9084ce1b5c4f",
+            "created": "2025-06-12T04:41:13.849395Z",
+            "modified": "2025-06-12T04:41:13.849395Z",
+            "name": "Clipboard Data",
+            "description": "Adversaries may collect data stored in the clipboard from users copying information within or between applications.\n\nIn Windows, Applications can access clipboard data by using the Windows API.[1] OSX provides a native command, pbpaste, to grab clipboard contents.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1115"
+                }
+            ]
+        },
+        {
+            "type": "malware",
+            "spec_version": "2.1",
+            "id": "malware--44f62464-424b-5d33-bf27-e3997676abd2",
+            "created": "2025-06-12T04:41:13.850377Z",
+            "modified": "2025-06-12T04:41:13.850377Z",
+            "name": "AnyDesk (Remote Access Tool)",
+            "is_family": false
+        },
+        {
+            "type": "malware",
+            "spec_version": "2.1",
+            "id": "malware--9fbe3447-b328-5f98-82b1-5e43b59c76e5",
+            "created": "2025-06-12T04:41:13.85139Z",
+            "modified": "2025-06-12T04:41:13.85139Z",
+            "name": "XMRig (CryptoMiner)",
+            "description": "XMRig is a crypto miner that uses the infected computer users to mine Monero, a cryptocurrency. XMRig can cause a computer to overheat and perform poorly.",
+            "is_family": false
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--74d6e491-e6e5-50fa-914e-8c8a60cf7dbb",
+            "created": "2025-06-12T04:41:13.862146Z",
+            "modified": "2025-06-12T04:41:13.862146Z",
+            "name": "IP: 157.230.106.100",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '157.230.106.100']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--286b22f2-6c0d-5fb8-80c3-2057548f8602",
+            "created": "2025-06-12T04:41:13.863419Z",
+            "modified": "2025-06-12T04:41:13.863419Z",
+            "name": "IP: 173.249.48.227",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '173.249.48.227']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--712fb5dc-61c2-50cb-a73a-78171d3a47aa",
+            "created": "2025-06-12T04:41:13.864412Z",
+            "modified": "2025-06-12T04:41:13.864412Z",
+            "name": "IP: 185.213.26.27",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '185.213.26.27']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--aa496588-10c2-5ce1-a893-8c839cd5be81",
+            "created": "2025-06-12T04:41:13.865808Z",
+            "modified": "2025-06-12T04:41:13.865808Z",
+            "name": "DOMAIN: crmmr.icc.me",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'crmmr.icc.me']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--6f80d5ed-595c-56d3-ac09-8afc4210169c",
+            "created": "2025-06-12T04:41:13.86802Z",
+            "modified": "2025-06-12T04:41:13.86802Z",
+            "name": "MD5: 2b9c5f6f01a7a06beeb533967a6e23ef",
+            "description": "TruKno MD5 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.md5 = '2b9c5f6f01a7a06beeb533967a6e23ef']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--f069edea-02cd-57e1-9999-91280f1f1b0d",
+            "created": "2025-06-12T04:41:13.869297Z",
+            "modified": "2025-06-12T04:41:13.869297Z",
+            "name": "MD5: 93d9d7b19403a6b794cbf4277e66bca0",
+            "description": "TruKno MD5 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.md5 = '93d9d7b19403a6b794cbf4277e66bca0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--48295ea4-3eb3-564d-942f-b816ac61225f",
+            "created": "2025-06-12T04:41:13.870424Z",
+            "modified": "2025-06-12T04:41:13.870424Z",
+            "name": "MD5: c0ed4f906576c06d861302e8cf924309",
+            "description": "TruKno MD5 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.md5 = 'c0ed4f906576c06d861302e8cf924309']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--74f24564-c2dc-5e60-b6ea-b78b0e559c91",
+            "created": "2025-06-12T04:41:13.871656Z",
+            "modified": "2025-06-12T04:41:13.871656Z",
+            "name": "MD5: 5b8961a8c3b6ca1d1e2ef3155c7c1b53",
+            "description": "TruKno MD5 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.md5 = '5b8961a8c3b6ca1d1e2ef3155c7c1b53']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--a3ff600d-b71e-50df-9bcb-ef836b8aca27",
+            "created": "2025-06-12T04:41:13.8727Z",
+            "modified": "2025-06-12T04:41:13.8727Z",
+            "name": "MD5: d9c1409e32a1b33070bed3a295123e66",
+            "description": "TruKno MD5 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.md5 = 'd9c1409e32a1b33070bed3a295123e66']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--caa52ee8-abc5-5c39-a2ff-41b8c5eda56e",
+            "created": "2025-06-12T04:41:13.873693Z",
+            "modified": "2025-06-12T04:41:13.873693Z",
+            "name": "MD5: 0c0195c48b6b8582fa6f6373032118da",
+            "description": "TruKno MD5 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.md5 = '0c0195c48b6b8582fa6f6373032118da']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--1de0c565-6d12-594d-9331-ad296dfba1b8",
+            "created": "2025-06-12T04:41:13.87481Z",
+            "modified": "2025-06-12T04:41:13.87481Z",
+            "name": "SHA256: 9303b671778422754bcf8fc97cd99f9f19173473ff515a6956bc61bc1de84389",
+            "description": "TruKno SHA256 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.sha256 = '9303b671778422754bcf8fc97cd99f9f19173473ff515a6956bc61bc1de84389']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--84cb74f3-fc1b-5d49-abbe-bb1eedb9503a",
+            "created": "2025-06-12T04:41:13.875982Z",
+            "modified": "2025-06-12T04:41:13.875982Z",
+            "name": "SHA256: e482617f9e9066bb875e2973bf3f469074cb266ec270deed933b8bd27070f62b",
+            "description": "TruKno SHA256 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.sha256 = 'e482617f9e9066bb875e2973bf3f469074cb266ec270deed933b8bd27070f62b']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--c2928895-324f-507f-81f5-dcedae634979",
+            "created": "2025-06-12T04:41:13.877065Z",
+            "modified": "2025-06-12T04:41:13.877065Z",
+            "name": "SHA256: 8e1c569508baacd7803f80728c03ed1d6ab098a1576c6470420e7a3af84c489c",
+            "description": "TruKno SHA256 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.sha256 = '8e1c569508baacd7803f80728c03ed1d6ab098a1576c6470420e7a3af84c489c']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--47b5fa87-7f81-5806-88df-1105a2249bcb",
+            "created": "2025-06-12T04:41:13.878126Z",
+            "modified": "2025-06-12T04:41:13.878126Z",
+            "name": "SHA256: 116fbb00ecdfe1ff4a9511e096c30a233b02be54d38e9a3d6a7e43a3205b1640",
+            "description": "TruKno SHA256 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.sha256 = '116fbb00ecdfe1ff4a9511e096c30a233b02be54d38e9a3d6a7e43a3205b1640']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--be363d78-6c66-5bcd-a04e-b1618d0d0604",
+            "created": "2025-06-12T04:41:13.87909Z",
+            "modified": "2025-06-12T04:41:13.87909Z",
+            "name": "SHA256: a8607309f60e9f1fac7f850d0daa8c41986a4fede610852b9e3ef8a3d5527a59",
+            "description": "TruKno SHA256 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.sha256 = 'a8607309f60e9f1fac7f850d0daa8c41986a4fede610852b9e3ef8a3d5527a59']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--fd8d2ef2-ffd4-5df4-a4ce-ee3768e54ef8",
+            "created": "2025-06-12T04:41:13.880041Z",
+            "modified": "2025-06-12T04:41:13.880041Z",
+            "name": "SHA256: 11bd2c9f9e2397c9a16e0990e4ed2cf0679498fe0fd418a3dfdac60b5c160ee5",
+            "description": "TruKno SHA256 indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[file:hashes.sha256 = '11bd2c9f9e2397c9a16e0990e4ed2cf0679498fe0fd418a3dfdac60b5c160ee5']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T13:29:54Z"
+        },
+        {
+            "type": "report",
+            "spec_version": "2.1",
+            "id": "report--23842066-4c7e-5707-89cc-13667fbaaa6c",
+            "created": "2025-06-12T04:41:13.880862Z",
+            "modified": "2025-06-12T04:41:13.880862Z",
+            "name": "When Samsung's Magic Turns Tragic: A Tale of Unauthorized Mining",
+            "description": "Learn more about active exploitation of a critical security flaw (CVE-2025-4632) within Samsung MagicINFO 9 Server installations, and how to protect your\u2026",
+            "published": "2025-06-11T13:29:54Z",
+            "object_refs": [
+                "identity--4e97ae21-faa6-5adb-9341-958d1f9db10f",
+                "attack-pattern--2b5aa86b-a0df-4382-848d-30abea443327",
+                "attack-pattern--3f533593-42ab-56ec-9ad3-f304e3900bb1",
+                "attack-pattern--3f886f2a-874f-4333-b794-aa6075009b1c",
+                "attack-pattern--71f8be5b-4927-537b-a5a0-c6795e380a97",
+                "attack-pattern--cd25c1b4-935c-4f0e-ba8d-552f28bc4783",
+                "attack-pattern--42e8de7b-37b2-4258-905a-6897815e58e0",
+                "attack-pattern--d1fcf083-a721-4223-aedf-bf8960798d62",
+                "attack-pattern--970a3432-3237-47ad-bcca-7d8cbb217736",
+                "attack-pattern--f24faf46-3b26-4dbb-98f2-63460498e433",
+                "attack-pattern--2959d63f-73fd-46a1-abd2-109d7dcede32",
+                "attack-pattern--8f4a33ec-8b1f-4b80-a2f6-642b2e479580",
+                "attack-pattern--27fbad95-58ad-5124-9f8a-f2d763975b21",
+                "attack-pattern--5d3291b9-7584-5dd6-b193-9fce03304a44",
+                "attack-pattern--51dea151-0898-4a45-967c-3ebee0420484",
+                "attack-pattern--a10641f4-87b4-45a3-a906-92a149cb2c27",
+                "attack-pattern--09b008a9-b4eb-462a-a751-a0eb58050cd9",
+                "attack-pattern--e6919abc-99f9-4c6c-95a5-14761e7b2add",
+                "attack-pattern--7bc57495-ea59-4380-be31-a64af124ef18",
+                "attack-pattern--9422fc14-1c43-410d-ab0f-a709b76c72dc",
+                "attack-pattern--3e6831b2-bf4c-4ae6-b328-2e7c6633b291",
+                "attack-pattern--b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
+                "attack-pattern--b18eae87-b469-4e14-b454-b171b416bc18",
+                "attack-pattern--df8b2a25-8bdf-4856-953c-a04372b1c161",
+                "attack-pattern--30973a08-aed9-4edf-8604-9084ce1b5c4f",
+                "malware--44f62464-424b-5d33-bf27-e3997676abd2",
+                "malware--9fbe3447-b328-5f98-82b1-5e43b59c76e5",
+                "indicator--74d6e491-e6e5-50fa-914e-8c8a60cf7dbb",
+                "indicator--286b22f2-6c0d-5fb8-80c3-2057548f8602",
+                "indicator--712fb5dc-61c2-50cb-a73a-78171d3a47aa",
+                "indicator--aa496588-10c2-5ce1-a893-8c839cd5be81",
+                "indicator--6f80d5ed-595c-56d3-ac09-8afc4210169c",
+                "indicator--f069edea-02cd-57e1-9999-91280f1f1b0d",
+                "indicator--48295ea4-3eb3-564d-942f-b816ac61225f",
+                "indicator--74f24564-c2dc-5e60-b6ea-b78b0e559c91",
+                "indicator--a3ff600d-b71e-50df-9bcb-ef836b8aca27",
+                "indicator--caa52ee8-abc5-5c39-a2ff-41b8c5eda56e",
+                "indicator--1de0c565-6d12-594d-9331-ad296dfba1b8",
+                "indicator--84cb74f3-fc1b-5d49-abbe-bb1eedb9503a",
+                "indicator--c2928895-324f-507f-81f5-dcedae634979",
+                "indicator--47b5fa87-7f81-5806-88df-1105a2249bcb",
+                "indicator--be363d78-6c66-5bcd-a04e-b1618d0d0604",
+                "indicator--fd8d2ef2-ffd4-5df4-a4ce-ee3768e54ef8"
+            ],
+            "labels": [
+                "Windows (Endpoint OS)",
+                "Endpoint Security"
+            ],
+            "external_references": [
+                {
+                    "source_name": "eSentire",
+                    "url": "https://www.esentire.com/blog/when-samsungs-magic-turns-tragic-a-tale-of-unauthorized-mining"
+                }
+            ]
+        }
+    ]
+}

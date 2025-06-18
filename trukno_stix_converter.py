@@ -98,6 +98,15 @@ class TruKnoToSTIXConverter:
             ''')
             
             cursor.execute('''
+            CREATE TABLE intrusion_set_mapping (
+                trukno_id TEXT PRIMARY KEY,
+                stix_id TEXT NOT NULL,
+                name TEXT NOT NULL,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+            ''')
+            
+            cursor.execute('''
             CREATE TABLE indicator_mapping (
                 trukno_id TEXT PRIMARY KEY,
                 stix_id TEXT NOT NULL,
@@ -130,32 +139,40 @@ class TruKnoToSTIXConverter:
         else:
             print(f"Using existing database: {self.db_file}")
 
-    def _get_or_create_stix_id(self, table: str, trukno_id: str, name: str, prefix: str) -> str:
-        """
-        Get an existing STIX ID from the database or create a new one
-        
-        Args:
-            table: Database table name
-            trukno_id: TruKno object ID
-            name: Object name for reference
-            prefix: STIX ID prefix (e.g., 'malware', 'attack-pattern', etc.)
-            
-        Returns:
-            STIX ID
-        """
+    def _get_mitre_stix_id(self, name, stix_type):
+        """Lookup MITRE canonical STIX ID by name or alias from mitre_stix_objects table."""
         cursor = self.db_conn.cursor()
-        cursor.execute(f"SELECT stix_id FROM {table} WHERE trukno_id = ?", (trukno_id,))
+        cursor.execute('''
+            SELECT stix_id FROM mitre_stix_objects
+            WHERE stix_type = ?
+            AND (LOWER(name) = LOWER(?) OR LOWER(aliases) LIKE ?)
+        ''', (stix_type, name, f'%{name.lower()}%'))
         result = cursor.fetchone()
-        
+        return result[0] if result else None
+
+    def _get_or_create_stix_id(self, mapping_table, trukno_id, name, stix_type):
+        """Get or create a STIX ID, using MITRE canonical ID if available."""
+        # For group mapping, check MITRE intrusion-set first
+        if stix_type == "intrusion-set":
+            mitre_id = self._get_mitre_stix_id(name, "intrusion-set")
+            if mitre_id:
+                return mitre_id
+        # For attack-pattern, malware, threat-actor, check MITRE as before
+        if stix_type in ["attack-pattern", "malware", "threat-actor"]:
+            mitre_id = self._get_mitre_stix_id(name, stix_type)
+            if mitre_id:
+                return mitre_id
+        # Fallback to existing logic
+        cursor = self.db_conn.cursor()
+        cursor.execute(f"SELECT stix_id FROM {mapping_table} WHERE trukno_id = ?", (trukno_id,))
+        result = cursor.fetchone()
         if result:
             return result[0]
-        
-        # Create new ID and store mapping
-        stix_id = f"{prefix}--{self._generate_deterministic_uuid(prefix + ':' + name)}"
-        cursor.execute(f"INSERT INTO {table} (trukno_id, stix_id, name) VALUES (?, ?, ?)", 
-                     (trukno_id, stix_id, name))
-        self.db_conn.commit()
-        return stix_id
+        else:
+            stix_id = f"{stix_type}--{self._generate_deterministic_uuid(stix_type + ':' + name)}"
+            cursor.execute(f"INSERT INTO {mapping_table} (trukno_id, stix_id, name) VALUES (?, ?, ?)", (trukno_id, stix_id, name))
+            self.db_conn.commit()
+            return stix_id
         
     def _generate_output_filename(self, input_file: str) -> str:
         """Generate an output filename based on the input filename"""
@@ -181,6 +198,7 @@ class TruKnoToSTIXConverter:
         self._create_identity_objects()
         self._create_attack_pattern_objects()
         self._create_malware_objects()
+        self._create_intrusion_set_objects()
         self._create_threat_actor_objects()
         self._create_indicator_objects()
         self._create_vulnerability_objects()
@@ -346,77 +364,103 @@ class TruKnoToSTIXConverter:
         """Create Malware objects from malware details"""
         if "relatedMalwareDetails" not in self.trukno_data:
             return
-            
         for malware_details in self.trukno_data.get("relatedMalwareDetails", []):
             # Skip if we don't have essential fields
             if not malware_details.get("title"):
                 continue
-                
             # Get the malware ID if it's in the data, otherwise use the title
             malware_id_key = "id" if "id" in malware_details else "_id"
             trukno_id = malware_details.get(malware_id_key, f"malware:{malware_details['title']}")
-            
+
+            # Try to use MITRE canonical ID if available
             malware_id = self._get_or_create_stix_id(
-                "malware_mapping", 
-                trukno_id, 
-                malware_details['title'], 
+                "malware_mapping",
+                trukno_id,
+                malware_details['title'],
                 "malware"
             )
-            
+
+            # If using MITRE ID, add external references from MITRE
+            external_refs = []
+            mitre_id = self._get_mitre_stix_id(malware_details['title'], "malware")
+            if mitre_id:
+                # Optionally, fetch MITRE external_id or add a reference
+                external_refs.append({
+                    "source_name": "mitre-attack",
+                    "external_id": mitre_id
+                })
+
             # Create the Malware object
             malware = stix2.Malware(
                 id=malware_id,
                 name=malware_details["title"],
                 description=malware_details.get("description", ""),
-                is_family=False
+                is_family=False,
+                external_references=external_refs if external_refs else None
             )
-            
             self.stix_objects.append(malware)
             self.object_refs.append(malware.id)
     
-    def _create_threat_actor_objects(self) -> None:
-        """Create Threat Actor objects from actor details"""
+    def _create_intrusion_set_objects(self) -> None:
+        """Create Intrusion Set objects from group details (APT, etc.)"""
         if "relatedActorDetails" not in self.trukno_data:
             return
-            
+        for actor_details in self.trukno_data.get("relatedActorDetails", []):
+            # Only treat as intrusion-set if it's a known group (e.g., APT, not an individual)
+            if not actor_details.get("title"):
+                continue
+            # Heuristic: If the title contains 'APT', 'Lazarus', 'Panda', etc., treat as intrusion-set
+            group_keywords = ["APT", "Lazarus", "Panda", "Bear", "Group", "Charming Kitten", "Mustang"]
+            if any(keyword.lower() in actor_details["title"].lower() for keyword in group_keywords):
+                trukno_id = actor_details.get("id", f"intrusion-set:{actor_details['title']}")
+                intrusion_set_id = self._get_or_create_stix_id(
+                    "intrusion_set_mapping",
+                    trukno_id,
+                    actor_details["title"],
+                    "intrusion-set"
+                )
+                intrusion_set = stix2.IntrusionSet(
+                    id=intrusion_set_id,
+                    name=actor_details["title"],
+                    description=actor_details.get("description", "")
+                )
+                self.stix_objects.append(intrusion_set)
+                self.object_refs.append(intrusion_set.id)
+
+    def _create_threat_actor_objects(self) -> None:
+        """Create Threat Actor objects from actor details (true individuals/orgs only)"""
+        if "relatedActorDetails" not in self.trukno_data:
+            return
         for actor_details in self.trukno_data.get("relatedActorDetails", []):
             try:
-                # Skip if we don't have essential fields
                 if not actor_details.get("title"):
                     continue
-                
-                # Get the actor ID if it's in the data, otherwise use the title
+                # Heuristic: If not a known group, treat as threat-actor (individual/org)
+                group_keywords = ["APT", "Lazarus", "Panda", "Bear", "Group", "Charming Kitten", "Mustang"]
+                if any(keyword.lower() in actor_details["title"].lower() for keyword in group_keywords):
+                    continue  # Skip, handled as intrusion-set
                 actor_id_key = "id" if "id" in actor_details else "_id"
                 trukno_id = actor_details.get(actor_id_key, f"actor:{actor_details['title']}")
-                
                 actor_id = self._get_or_create_stix_id(
-                    "threat_actor_mapping", 
-                    trukno_id, 
-                    actor_details['title'], 
+                    "threat_actor_mapping",
+                    trukno_id,
+                    actor_details["title"],
                     "threat-actor"
                 )
-                
-                # Prepare description with location information
                 description = actor_details.get("description", "")
                 if actor_details.get("location"):
-                    # Add a clear separator if there's already content in the description
                     if description:
                         description += "\n\n--------\n"
                     description += f"Location/Country of operation: {actor_details['location']}"
-                
-                # Create the Threat Actor object without using 'countries'
                 actor = stix2.ThreatActor(
                     id=actor_id,
                     name=actor_details["title"],
                     description=description
-                    # Don't use the countries parameter as it may not be supported in all stix2 library versions
                 )
-                
                 self.stix_objects.append(actor)
                 self.object_refs.append(actor.id)
             except Exception as e:
                 print(f"Warning: Failed to create Threat Actor object for '{actor_details.get('title', 'Unknown')}': {str(e)}")
-                # Continue processing other actors
     
     def _create_indicator_objects(self) -> None:
         """Create Indicator objects from IOCs"""

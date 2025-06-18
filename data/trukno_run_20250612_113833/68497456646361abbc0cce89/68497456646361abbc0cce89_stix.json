@@ -1,0 +1,1034 @@
+{
+    "type": "bundle",
+    "id": "bundle--11eae04c-16cf-42df-b814-9b8d6da64662",
+    "objects": [
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--84279a50-6bc1-5494-9fcd-518f5e16b83d",
+            "created": "2025-06-12T04:44:58.793769Z",
+            "modified": "2025-06-12T04:44:58.793769Z",
+            "name": "Vojt\u011bch Krejsa, Milan \u0160pinka",
+            "identity_class": "individual"
+        },
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--deda2a97-d4b6-5b8e-8722-4cb2978ae78f",
+            "created": "2025-06-12T04:44:58.794565Z",
+            "modified": "2025-06-12T04:44:58.794565Z",
+            "name": "Media & Entertainment",
+            "identity_class": "class",
+            "sectors": [
+                "Media & Entertainment"
+            ]
+        },
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--4e97ae21-faa6-5adb-9341-958d1f9db10f",
+            "created": "2025-06-12T04:44:58.794784Z",
+            "modified": "2025-06-12T04:44:58.794784Z",
+            "name": "Cryptocurrency",
+            "identity_class": "class",
+            "sectors": [
+                "Cryptocurrency"
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--853c4192-4311-43e1-bfbb-b11b14911852",
+            "created": "2025-06-12T04:44:58.804349Z",
+            "modified": "2025-06-12T04:44:58.804349Z",
+            "name": "Execution Guardrails",
+            "description": "Execution Guardrails technique allows adversaries to constrain execution or actions based on adversary supplied environment-specific conditions that are expected to be present on the target. Guardrails ensure that a payload only executes against an intended target (specific network share names, attached physical devices, files, joined Active Directory domains, and local/external IP addresses) and reduces collateral damage from an adversary\u2019s campaign.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1480"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--405b7d1b-e6ba-537f-acfd-0518ea5e9cee",
+            "created": "2025-06-12T04:44:58.806053Z",
+            "modified": "2025-06-12T04:44:58.806053Z",
+            "name": "Web Services (Acquire Infrastructure)",
+            "description": "Before compromising a victim, adversaries may register for web services that can be used during targeting. A variety of popular websites exist for adversaries to register for a web-based service that can be abused during later stages of the adversary lifecycle, such as during Command and Control (Web Service) or Exfiltration Over Web Service. Using common services, such as those offered by Google or Twitter, makes it easier for adversaries to hide in expected noise. By utilizing a web service, adversaries can make it difficult to physically tie back operations to them.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1583.006"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--43c9bc06-715b-42db-972f-52d25c09a20c",
+            "created": "2025-06-12T04:44:58.807035Z",
+            "modified": "2025-06-12T04:44:58.807035Z",
+            "name": "Content Injection",
+            "description": "Content Injection attack may allow adversaries to gain access and continuously communicate with victims by injecting malicious content into systems through online network traffic. Rather than luring victims to malicious payloads hosted on a compromised website (i.e., Drive-by Target followed by Drive-by Compromise), adversaries may initially access victims through compromised data-transfer channels where they can manipulate traffic and/or inject their own content. These compromised online network channels may also be used to deliver additional payloads (i.e., Ingress Tool Transfer) and other data to already compromised systems.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1659 "
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--ef67e13e-5598-4adc-bdb2-998225874fa9",
+            "created": "2025-06-12T04:44:58.807915Z",
+            "modified": "2025-06-12T04:44:58.807915Z",
+            "name": "Malicious Link",
+            "description": "Malicious Link attack relies upon a user clicking a malicious link in a phishing email in order to gain execution. Clicking on the malicious link may also lead to other execution techniques such as exploitation of a browser, application vulnerability, or downloading files that require execution via malicious file.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1204.001"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--f6cbfd9e-4fc8-51b2-860e-91b093305fe8",
+            "created": "2025-06-12T04:44:58.8088Z",
+            "modified": "2025-06-12T04:44:58.8088Z",
+            "name": "URL Redirect",
+            "description": "URL Redirect technique allows an adversary to redirect users to compromised legitimate websites before redirecting to a malicious website or send benign files (like Pdf) with malicious URL to bypass security systems."
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--e261a979-f354-41a8-963e-6cadac27c4bf",
+            "created": "2025-06-12T04:44:58.80979Z",
+            "modified": "2025-06-12T04:44:58.80979Z",
+            "name": "Malicious Copy and Paste",
+            "description": "Malicious Copy and Paste allows an adversary to rely upon a user copying and pasting code in order to gain execution. Users may be subjected to social engineering to get them to copy and paste code directly into a Command and Scripting Interpreter. This attack technique is also ClickFix technique. It is essentially an attempt to execute a malicious command on the victim\u2019s computer relying solely on social engineering techniques. Under one pretext or another, attackers convince the user to copy a long command line (in the vast majority of cases \u2014 a PowerShell script), paste it into the system\u2019s Run window, and press Enter, which should ultimately lead to compromising the system.\n\nThe attack normally begins with a pop-up window simulating a notification about a technical problem. To fix this problem, the user needs to perform a few simple steps, which boil down to copying some object and executing it through the Run application. However, in Windows 11, PowerShell can also be executed from the search bar for applications, settings, and documents, which opens when you click on the icon with the system\u2019s logo, so sometimes the victim is asked to copy something there.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1204.004"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--d80a80e4-68cf-5be8-b9e7-3976f19f8270",
+            "created": "2025-06-12T04:44:58.810609Z",
+            "modified": "2025-06-12T04:44:58.810609Z",
+            "name": "Fake CAPTCHA",
+            "description": "Fake CAPTCHA technique uses fake CAPTCHA walls to disguise malicious content by preventing automated URL analysis systems from accessing the actual content of phishing pages, to trick unsuspecting users to receive unwanted ads even when the site isn\u2019t open, etc."
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--edc219d5-6e87-514e-8332-bac391581f57",
+            "created": "2025-06-12T04:44:58.811026Z",
+            "modified": "2025-06-12T04:44:58.811026Z",
+            "name": "JavaScript / JScript",
+            "description": "JavaScript / JScript attack maliciously modifies a website's design or manipulate key  parameter (for example, cookies, url links, etc.) to steal sensitive user input",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1059.007"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
+            "created": "2025-06-12T04:44:58.811392Z",
+            "modified": "2025-06-12T04:44:58.811392Z",
+            "name": "Obfuscated Files or Information",
+            "description": "Obfuscated Files or Information attack uses encoding or encryption to change the signature & fingerprint of malicious code to bypass security software algorithms.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1027"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--40f850e4-0428-5c99-aced-d8971768bea0",
+            "created": "2025-06-12T04:44:58.811703Z",
+            "modified": "2025-06-12T04:44:58.811703Z",
+            "name": "Domain Generation Algorithm (DGA)",
+            "description": "Domain Generation Algorithm attack produces random domain names that can become the address of the C&C server for evasion of malicious domain blacklisting",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1568.002"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--354a7f88-63fb-41b5-a801-ce3b377b36f1",
+            "created": "2025-06-12T04:44:58.811978Z",
+            "modified": "2025-06-12T04:44:58.811978Z",
+            "name": "System Information Discovery",
+            "description": "System Information Discovery attack is used by an adversary to get detailed information about the operating system and hardware, including version, patches, hotfixes, service packs, and architecture to shape follow-on attack steps including whether or not to fully infect the target and/or attempts other specific actions.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1082"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--707399d6-ab3e-4963-9315-d9d3818cd6a0",
+            "created": "2025-06-12T04:44:58.812247Z",
+            "modified": "2025-06-12T04:44:58.812247Z",
+            "name": "System Network Configuration Discovery",
+            "description": "System Network Configuration Discovery attack look for details about the network configuration and settings of systems they access or through information discovery of remote systems. Several operating system administration utilities exist (e.g. Arp, Ipconfig/Ifconfig, Nbtstat, and Route) that can be used to gather this information.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1016"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--5e4a2073-9643-44cb-a0b5-e7f4048446c7",
+            "created": "2025-06-12T04:44:58.812517Z",
+            "modified": "2025-06-12T04:44:58.812517Z",
+            "name": "Browser Information Discovery",
+            "description": "Browser Information Discovery technique allows an adversary to numerate information about browsers to learn more about compromised environments. Data saved by browsers (such as bookmarks, accounts, and browsing history) may reveal a variety of personal information about users (e.g., banking sites, relationships/interests, social media, etc.) as well as details about internal network resources such as servers, tools/dashboards, or other related infrastructure.\n\nBrowser information may also highlight additional targets after an adversary has access to valid credentials, especially Credentials In Files associated with logins cached by a browser.\n\nSpecific storage locations vary based on platform and/or application, but browser information is typically stored in local files and databases (e.g., %APPDATA%/Google/Chrome).",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1217"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--04fd5427-79c7-44ea-ae13-11b24778ff1c",
+            "created": "2025-06-12T04:44:58.812772Z",
+            "modified": "2025-06-12T04:44:58.812772Z",
+            "name": "Standard Encoding",
+            "description": "Standard Encoding attack encodes data with a standard data encoding system to make the content of command and control traffic more difficult to detect. Common data encoding schemes include ASCII, Unicode, hexadecimal, Base64, and MIME.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1132.001"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--c877e33f-1df6-40d6-b1e7-ce70f16f4979",
+            "created": "2025-06-12T04:44:58.813025Z",
+            "modified": "2025-06-12T04:44:58.813025Z",
+            "name": "System Location Discovery",
+            "description": "System Location Discovery technique allows adversaries to gather information in an attempt to calculate the geographical location of a victim host o shape follow-on behaviors, including whether or not to infects the target based on their physical location. Adversaries may attempt to infer the location of a system using various system checks, such as time zone, keyboard layout, and/or language settings. Windows API functions such as GetLocaleInfoW can also be used to determine the locale of the host. In cloud environments, an instance's availability zone may also be discovered by accessing the instance metadata service from the instance. Adversaries may also attempt to infer the location of a victim host using IP address, such as via online geolocation IP-lookup services.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1614"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--494ab9f0-36e0-4b06-b10d-57285b040a06",
+            "created": "2025-06-12T04:44:58.813276Z",
+            "modified": "2025-06-12T04:44:58.813276Z",
+            "name": "Wi-Fi Discovery",
+            "description": "Wi-Fi Discovery allows an adversary to search for information about Wi-Fi networks, such as network names and passwords, on compromised systems. Adversaries may use Wi-Fi information as part of Account Discovery, Remote System Discovery, and other discovery or Credential Access activity to support both ongoing and future campaigns.\n\nAdversaries may collect various types of information about Wi-Fi networks from hosts. For example, on Windows names and passwords of all Wi-Fi networks a device has previously connected to may be available through netsh wlan show profiles to enumerate Wi-Fi names and then netsh wlan show profile \"Wi-Fi name\" key=clear to show a Wi-Fi network\u2019s corresponding password.[1][2][3] Additionally, names and other details of locally reachable Wi-Fi networks can be discovered using calls to wlanAPI.dll Native API functions.[4]\n\nOn Linux, names and passwords of all Wi-Fi-networks a device has previously connected to may be available in files under /etc/NetworkManager/system-connections/.[5] On macOS, the password of a known Wi-Fi may be identified with security find-generic-password -wa wifiname (requires admin username/password).",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1016.002"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--df8b2a25-8bdf-4856-953c-a04372b1c161",
+            "created": "2025-06-12T04:44:58.813526Z",
+            "modified": "2025-06-12T04:44:58.813526Z",
+            "name": "Web Protocols",
+            "description": "Web Protocols attack uses application layer protocols associated with web traffic to avoid detection/network filtering by blending in with existing traffic by embedding C2 communication within the HTTP / HTTPS protocol traffic between the client and server. HTTP / HTTPS packets have many fields and headers in which data can be concealed.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1071.001"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--278716b1-61ce-4a74-8d17-891d0c494101",
+            "created": "2025-06-12T04:44:58.813779Z",
+            "modified": "2025-06-12T04:44:58.813779Z",
+            "name": "Browser Extensions",
+            "description": "Browser Extensions attack uses internet browser extensions or plugins (for browsers like Chrome, Firefox, Edge, or Safari)  to automatically browse to websites in the background, steal all information that a user enters into a browser (including credentials), modify Google search results, and can be used as an installer for a RAT for persistence.",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1176"
+                }
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--efaa643f-a746-54e4-9c11-aee68fba630d",
+            "created": "2025-06-12T04:44:58.814035Z",
+            "modified": "2025-06-12T04:44:58.814035Z",
+            "name": "Cryptocurrency Theft",
+            "description": "Cryptocurrency Theft attack steals from exchanges, wallets, and other cryptocurrency custody services using techniques like SIM swapping, phishing, web skimming, URL hijacking, etc. to take over user and administrator accounts"
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--bb5a00de-e086-4859-a231-fa793f6797e2",
+            "created": "2025-06-12T04:44:58.814277Z",
+            "modified": "2025-06-12T04:44:58.814277Z",
+            "name": "Input Capture",
+            "description": "Input Capture attack uses various methods to capture user input to obtain credentials or collect information via login pages/portals or system dialog boxes. Input capture mechanisms may be transparent to the user (e.g. Credential API Hooking) or rely on deceiving the user into providing input into what they believe to be a genuine service (e.g. Web Portal Capture).",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": "T1056"
+                }
+            ]
+        },
+        {
+            "type": "malware",
+            "spec_version": "2.1",
+            "id": "malware--6170812e-22c9-5827-8faf-5a7df7e809bb",
+            "created": "2025-06-12T04:44:58.81469Z",
+            "modified": "2025-06-12T04:44:58.81469Z",
+            "name": "LummaStealer (Info Stealer)",
+            "is_family": false
+        },
+        {
+            "type": "malware",
+            "spec_version": "2.1",
+            "id": "malware--d0b17a17-86d0-5574-a2dc-8d060a345e11",
+            "created": "2025-06-12T04:44:58.815079Z",
+            "modified": "2025-06-12T04:44:58.815079Z",
+            "name": "Emmenhtal (Malware Loader)",
+            "is_family": false
+        },
+        {
+            "type": "malware",
+            "spec_version": "2.1",
+            "id": "malware--a23e7da5-9694-5a65-9a67-b96e7bce84ec",
+            "created": "2025-06-12T04:44:58.815448Z",
+            "modified": "2025-06-12T04:44:58.815448Z",
+            "name": "HelloTDS (Malware TDS)",
+            "is_family": false
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--8bd856e7-beb5-52f8-996e-04db24692316",
+            "created": "2025-06-12T04:44:58.817024Z",
+            "modified": "2025-06-12T04:44:58.817024Z",
+            "name": "IP: 23.83.64.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '23.83.64.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--521c83af-e8d1-5c4d-be58-4c525ba5a011",
+            "created": "2025-06-12T04:44:58.81753Z",
+            "modified": "2025-06-12T04:44:58.81753Z",
+            "name": "IP: 23.109.120.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '23.109.120.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--b70fb6ce-6ecb-573e-82ca-b97436413d91",
+            "created": "2025-06-12T04:44:58.81802Z",
+            "modified": "2025-06-12T04:44:58.81802Z",
+            "name": "IP: 23.109.128.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '23.109.128.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--61db22de-2d36-5203-a77c-27e813441757",
+            "created": "2025-06-12T04:44:58.818356Z",
+            "modified": "2025-06-12T04:44:58.818356Z",
+            "name": "IP: 23.109.170.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '23.109.170.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--13490385-d51a-5d78-9dd9-d7ea4622282a",
+            "created": "2025-06-12T04:44:58.818681Z",
+            "modified": "2025-06-12T04:44:58.818681Z",
+            "name": "IP: 94.242.232.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '94.242.232.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--19932169-7c2b-530b-b223-32b0b7fd77da",
+            "created": "2025-06-12T04:44:58.819003Z",
+            "modified": "2025-06-12T04:44:58.819003Z",
+            "name": "IP: 172.240.104.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '172.240.104.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--4586df97-a776-5cb7-bfda-168618d7f88b",
+            "created": "2025-06-12T04:44:58.819326Z",
+            "modified": "2025-06-12T04:44:58.819326Z",
+            "name": "IP: 172.241.48.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '172.241.48.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--7c75e931-e1e8-568c-b16e-29706f66b9f5",
+            "created": "2025-06-12T04:44:58.819734Z",
+            "modified": "2025-06-12T04:44:58.819734Z",
+            "name": "IP: 172.255.96.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '172.255.96.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--76bd2df1-454f-51db-b2bd-ac6ce972fcf8",
+            "created": "2025-06-12T04:44:58.820362Z",
+            "modified": "2025-06-12T04:44:58.820362Z",
+            "name": "IP: 173.0.146.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '173.0.146.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--0a1cb0a3-fc40-504a-90d3-de78478bb246",
+            "created": "2025-06-12T04:44:58.82078Z",
+            "modified": "2025-06-12T04:44:58.82078Z",
+            "name": "IP: 173.237.64.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '173.237.64.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--dfcbf1cb-68fc-532a-8858-bd898ab99d10",
+            "created": "2025-06-12T04:44:58.821463Z",
+            "modified": "2025-06-12T04:44:58.821463Z",
+            "name": "IP: 188.42.104.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '188.42.104.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--5da53442-c2cc-5caa-a94e-392b25517058",
+            "created": "2025-06-12T04:44:58.821824Z",
+            "modified": "2025-06-12T04:44:58.821824Z",
+            "name": "IP: 188.42.240.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '188.42.240.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--aa20b732-70ed-5c82-89cb-398ea118d2a2",
+            "created": "2025-06-12T04:44:58.822386Z",
+            "modified": "2025-06-12T04:44:58.822386Z",
+            "name": "IP: 209.192.192.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '209.192.192.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--1665579e-4a68-5beb-9de5-815dd3398aaa",
+            "created": "2025-06-12T04:44:58.822952Z",
+            "modified": "2025-06-12T04:44:58.822952Z",
+            "name": "IP: 212.117.184.0",
+            "description": "TruKno IP indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '212.117.184.0']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--65da642a-c5a2-5453-a213-231407f29fc0",
+            "created": "2025-06-12T04:44:58.823328Z",
+            "modified": "2025-06-12T04:44:58.823328Z",
+            "name": "DOMAIN: dailyuploads.net",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'dailyuploads.net']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--99b59e74-4c59-5199-a750-0c69b832e770",
+            "created": "2025-06-12T04:44:58.823653Z",
+            "modified": "2025-06-12T04:44:58.823653Z",
+            "name": "DOMAIN: streamtape.to",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'streamtape.to']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--b6a56771-e7cb-597f-8814-2bb33b7b63f0",
+            "created": "2025-06-12T04:44:58.824137Z",
+            "modified": "2025-06-12T04:44:58.824137Z",
+            "name": "DOMAIN: streamtape.net",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'streamtape.net']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--99b59e74-4c59-5199-a750-0c69b832e770",
+            "created": "2025-06-12T04:44:58.825268Z",
+            "modified": "2025-06-12T04:44:58.825268Z",
+            "name": "DOMAIN: streamtape.to",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'streamtape.to']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--af292fe8-7fc7-5f1d-b90a-8fd4d7abd852",
+            "created": "2025-06-12T04:44:58.828104Z",
+            "modified": "2025-06-12T04:44:58.828104Z",
+            "name": "DOMAIN: watchadsontape.com",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'watchadsontape.com']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--a9bad4db-7f41-54bf-a5d2-8c1a5b3e89fb",
+            "created": "2025-06-12T04:44:58.830727Z",
+            "modified": "2025-06-12T04:44:58.830727Z",
+            "name": "DOMAIN: bigwarp.art",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'bigwarp.art']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--b79a91d3-1264-5eb8-b1b4-6c91d7bbda2e",
+            "created": "2025-06-12T04:44:58.831884Z",
+            "modified": "2025-06-12T04:44:58.831884Z",
+            "name": "DOMAIN: savefiles.com",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'savefiles.com']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--24875e15-27b1-56a0-aff5-641c7d96775e",
+            "created": "2025-06-12T04:44:58.83304Z",
+            "modified": "2025-06-12T04:44:58.83304Z",
+            "name": "DOMAIN: yr.unasonoric.com",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'yr.unasonoric.com']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--cdb4fe9f-1936-5ee6-b6cc-ec0edf9f5e2c",
+            "created": "2025-06-12T04:44:58.834107Z",
+            "modified": "2025-06-12T04:44:58.834107Z",
+            "name": "DOMAIN: gq.binesyorker.com",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'gq.binesyorker.com']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--c947f329-f2db-569e-8138-871230ad8587",
+            "created": "2025-06-12T04:44:58.83542Z",
+            "modified": "2025-06-12T04:44:58.83542Z",
+            "name": "DOMAIN: sb.rowlandpodogyn.shop",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'sb.rowlandpodogyn.shop']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--37214ca1-0a0b-50d8-bf2b-bcf70732a659",
+            "created": "2025-06-12T04:44:58.836215Z",
+            "modified": "2025-06-12T04:44:58.836215Z",
+            "name": "DOMAIN: nutatedtriol.com",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'nutatedtriol.com']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--294ee8a2-160e-562e-ac65-12756edbe096",
+            "created": "2025-06-12T04:44:58.836751Z",
+            "modified": "2025-06-12T04:44:58.836751Z",
+            "name": "DOMAIN: mixscoggan.shop",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'mixscoggan.shop']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--44e418db-f522-5d3b-a7f2-168fda569892",
+            "created": "2025-06-12T04:44:58.837122Z",
+            "modified": "2025-06-12T04:44:58.837122Z",
+            "name": "DOMAIN: bu.unrimedironize.shop",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'bu.unrimedironize.shop']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--a8ff2e27-40b2-561c-9932-40a1edfa31c3",
+            "created": "2025-06-12T04:44:58.837508Z",
+            "modified": "2025-06-12T04:44:58.837508Z",
+            "name": "DOMAIN: actednow.com",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'actednow.com']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--803d4581-917e-529b-93ec-5beaa1f6cfca",
+            "created": "2025-06-12T04:44:58.837881Z",
+            "modified": "2025-06-12T04:44:58.837881Z",
+            "name": "DOMAIN: buzzflying.shop",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'buzzflying.shop']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--13a1d4a6-2616-5318-989d-5504897ad536",
+            "created": "2025-06-12T04:44:58.83851Z",
+            "modified": "2025-06-12T04:44:58.83851Z",
+            "name": "DOMAIN: goldtera.live",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'goldtera.live']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--437370b2-4cb6-51c5-8d04-9641c2990b9d",
+            "created": "2025-06-12T04:44:58.838986Z",
+            "modified": "2025-06-12T04:44:58.838986Z",
+            "name": "DOMAIN: orbito.online",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'orbito.online']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--b64b5c29-ea91-51c6-8d92-1e6f824982d8",
+            "created": "2025-06-12T04:44:58.840004Z",
+            "modified": "2025-06-12T04:44:58.840004Z",
+            "name": "DOMAIN: bestfree4u.com",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'bestfree4u.com']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--05f83675-55d8-56c3-8b27-606ee94acbc0",
+            "created": "2025-06-12T04:44:58.840472Z",
+            "modified": "2025-06-12T04:44:58.840472Z",
+            "name": "DOMAIN: avs4u.net",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'avs4u.net']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--f989c02f-5a44-59b2-b3f3-c88776a1f11e",
+            "created": "2025-06-12T04:44:58.840899Z",
+            "modified": "2025-06-12T04:44:58.840899Z",
+            "name": "DOMAIN: arcadeclassic.org",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'arcadeclassic.org']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--ca4d5db0-0ade-51cc-8856-8ab82fbc49e3",
+            "created": "2025-06-12T04:44:58.841702Z",
+            "modified": "2025-06-12T04:44:58.841702Z",
+            "name": "DOMAIN: adelaidavizcaino.com",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'adelaidavizcaino.com']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--93e69e95-7c0b-55f4-a73e-247e0b9e87f3",
+            "created": "2025-06-12T04:44:58.842175Z",
+            "modified": "2025-06-12T04:44:58.842175Z",
+            "name": "DOMAIN: partage-de-medias.fly.storage.tigris.dev",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'partage-de-medias.fly.storage.tigris.dev']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--ba67a33e-6253-5f9b-aa01-ba9547d19ea1",
+            "created": "2025-06-12T04:44:58.842749Z",
+            "modified": "2025-06-12T04:44:58.842749Z",
+            "name": "DOMAIN: finding-from-internet.fly.storage.tigris.dev",
+            "description": "TruKno DOMAIN indicator",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[domain-name:value = 'finding-from-internet.fly.storage.tigris.dev']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2025-06-11T12:18:53Z"
+        },
+        {
+            "type": "report",
+            "spec_version": "2.1",
+            "id": "report--f2af94b0-482b-50f0-bb5e-68c03ac26966",
+            "created": "2025-06-12T04:44:58.843248Z",
+            "modified": "2025-06-12T04:44:58.843248Z",
+            "name": "Say Hi to HelloTDS: The Infrastructure Behind FakeCaptcha",
+            "description": "A behind-the-scenes look at HelloTDS: the stealthy infrastructure driving FakeCaptcha scams, malware and more across millions of devices",
+            "published": "2025-06-11T12:18:53Z",
+            "object_refs": [
+                "identity--84279a50-6bc1-5494-9fcd-518f5e16b83d",
+                "identity--deda2a97-d4b6-5b8e-8722-4cb2978ae78f",
+                "identity--4e97ae21-faa6-5adb-9341-958d1f9db10f",
+                "attack-pattern--853c4192-4311-43e1-bfbb-b11b14911852",
+                "attack-pattern--405b7d1b-e6ba-537f-acfd-0518ea5e9cee",
+                "attack-pattern--43c9bc06-715b-42db-972f-52d25c09a20c",
+                "attack-pattern--ef67e13e-5598-4adc-bdb2-998225874fa9",
+                "attack-pattern--f6cbfd9e-4fc8-51b2-860e-91b093305fe8",
+                "attack-pattern--e261a979-f354-41a8-963e-6cadac27c4bf",
+                "attack-pattern--d80a80e4-68cf-5be8-b9e7-3976f19f8270",
+                "attack-pattern--edc219d5-6e87-514e-8332-bac391581f57",
+                "attack-pattern--b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
+                "attack-pattern--40f850e4-0428-5c99-aced-d8971768bea0",
+                "attack-pattern--354a7f88-63fb-41b5-a801-ce3b377b36f1",
+                "attack-pattern--707399d6-ab3e-4963-9315-d9d3818cd6a0",
+                "attack-pattern--5e4a2073-9643-44cb-a0b5-e7f4048446c7",
+                "attack-pattern--04fd5427-79c7-44ea-ae13-11b24778ff1c",
+                "attack-pattern--c877e33f-1df6-40d6-b1e7-ce70f16f4979",
+                "attack-pattern--494ab9f0-36e0-4b06-b10d-57285b040a06",
+                "attack-pattern--df8b2a25-8bdf-4856-953c-a04372b1c161",
+                "attack-pattern--278716b1-61ce-4a74-8d17-891d0c494101",
+                "attack-pattern--efaa643f-a746-54e4-9c11-aee68fba630d",
+                "attack-pattern--bb5a00de-e086-4859-a231-fa793f6797e2",
+                "malware--6170812e-22c9-5827-8faf-5a7df7e809bb",
+                "malware--d0b17a17-86d0-5574-a2dc-8d060a345e11",
+                "malware--a23e7da5-9694-5a65-9a67-b96e7bce84ec",
+                "indicator--8bd856e7-beb5-52f8-996e-04db24692316",
+                "indicator--521c83af-e8d1-5c4d-be58-4c525ba5a011",
+                "indicator--b70fb6ce-6ecb-573e-82ca-b97436413d91",
+                "indicator--61db22de-2d36-5203-a77c-27e813441757",
+                "indicator--13490385-d51a-5d78-9dd9-d7ea4622282a",
+                "indicator--19932169-7c2b-530b-b223-32b0b7fd77da",
+                "indicator--4586df97-a776-5cb7-bfda-168618d7f88b",
+                "indicator--7c75e931-e1e8-568c-b16e-29706f66b9f5",
+                "indicator--76bd2df1-454f-51db-b2bd-ac6ce972fcf8",
+                "indicator--0a1cb0a3-fc40-504a-90d3-de78478bb246",
+                "indicator--dfcbf1cb-68fc-532a-8858-bd898ab99d10",
+                "indicator--5da53442-c2cc-5caa-a94e-392b25517058",
+                "indicator--aa20b732-70ed-5c82-89cb-398ea118d2a2",
+                "indicator--1665579e-4a68-5beb-9de5-815dd3398aaa",
+                "indicator--65da642a-c5a2-5453-a213-231407f29fc0",
+                "indicator--99b59e74-4c59-5199-a750-0c69b832e770",
+                "indicator--b6a56771-e7cb-597f-8814-2bb33b7b63f0",
+                "indicator--99b59e74-4c59-5199-a750-0c69b832e770",
+                "indicator--af292fe8-7fc7-5f1d-b90a-8fd4d7abd852",
+                "indicator--a9bad4db-7f41-54bf-a5d2-8c1a5b3e89fb",
+                "indicator--b79a91d3-1264-5eb8-b1b4-6c91d7bbda2e",
+                "indicator--24875e15-27b1-56a0-aff5-641c7d96775e",
+                "indicator--cdb4fe9f-1936-5ee6-b6cc-ec0edf9f5e2c",
+                "indicator--c947f329-f2db-569e-8138-871230ad8587",
+                "indicator--37214ca1-0a0b-50d8-bf2b-bcf70732a659",
+                "indicator--294ee8a2-160e-562e-ac65-12756edbe096",
+                "indicator--44e418db-f522-5d3b-a7f2-168fda569892",
+                "indicator--a8ff2e27-40b2-561c-9932-40a1edfa31c3",
+                "indicator--803d4581-917e-529b-93ec-5beaa1f6cfca",
+                "indicator--13a1d4a6-2616-5318-989d-5504897ad536",
+                "indicator--437370b2-4cb6-51c5-8d04-9641c2990b9d",
+                "indicator--b64b5c29-ea91-51c6-8d92-1e6f824982d8",
+                "indicator--05f83675-55d8-56c3-8b27-606ee94acbc0",
+                "indicator--f989c02f-5a44-59b2-b3f3-c88776a1f11e",
+                "indicator--ca4d5db0-0ade-51cc-8856-8ab82fbc49e3",
+                "indicator--93e69e95-7c0b-55f4-a73e-247e0b9e87f3",
+                "indicator--ba67a33e-6253-5f9b-aa01-ba9547d19ea1"
+            ],
+            "labels": [
+                "Brave(Web Browser)",
+                "Chrome (Web Browser)",
+                "Edge (Web Browser)",
+                "Firefox (Web Browser)",
+                "Internet Explorer (Web Browser)",
+                "Mozilla(Web Browser)",
+                "Opera (Web Browser)",
+                "Safari (Web Browser)",
+                "Windows (Endpoint OS)",
+                "Web Security",
+                "Endpoint Security"
+            ],
+            "external_references": [
+                {
+                    "source_name": "Gendigital",
+                    "url": "https://www.gendigital.com/blog/insights/research/inside-hellotds-malware-network"
+                }
+            ]
+        }
+    ]
+}
